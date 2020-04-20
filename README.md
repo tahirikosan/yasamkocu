@@ -1,0 +1,3 @@
+# yasamkocu
+
+GG bruh
