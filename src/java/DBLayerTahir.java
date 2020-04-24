@@ -115,13 +115,40 @@ public class DBLayerTahir {
         return false;
     }
     
+    // Login
+    public boolean loginUser(User user){
+        if(conn == null){
+            connect();
+        }
+        
+        try {
+            String query = "SELECT * FROM kullanici WHERE email = '" +user.getEmail()+ "' AND password = '" +user.getPassword()+"'";
+            Statement statement = conn.createStatement();
+            
+            ResultSet result = statement.executeQuery(query);
+            
+            while(result.next()){
+                System.out.println("wwrked");
+                return true;
+            }
+            
+            return false;
+        
+        } catch (Exception e) {
+            System.out.println("Login hata " + e.toString());
+        }
+        
+        return false;
+    }
+    
     public static void main(String[] args) {
         DBLayerTahir db = new DBLayerTahir();
         
         db.connect();
         
-        User user = new User(1, "defter",  "abc",  "mokko",  "mokko", 0,  "mokko", 0, 0);
-        db.registerUser(user);
+        User user = new User(1, "mokok",  "mokok",  "mokok",  "mokok", 0,  "mokko", 0, 0);
+        //db.registerUser(user);
+        db.loginUser(user);
         
         
     }

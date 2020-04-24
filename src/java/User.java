@@ -27,6 +27,7 @@ public class User {
     
     private String password_c;
     private String errorRegister; 
+    private String errorLogin;
 
     public String getErrorRegister() {
         return errorRegister;
@@ -50,6 +51,14 @@ public class User {
         this.gender = gender;
         this.height = height;
         this.weight = weight;
+    }
+
+    public String getErrorLogin() {
+        return errorLogin;
+    }
+
+    public void setErrorLogin(String errorLogin) {
+        this.errorLogin = errorLogin;
     }
 
     public String getPassword_c() {
@@ -169,15 +178,16 @@ public class User {
         return false;
     }
     
-   /* public void login(){
+    public String login(){
         DBLayerTahir db = new DBLayerTahir();
         boolean result = db.loginUser(this);
         
         if(result){
             return "main_menu.xhtml";
         }else{
+            errorLogin = "Kullanıcı adı veya şifre yanlış";
             return "login.xhtml";
         }
-    }*/
+    }
        
 }

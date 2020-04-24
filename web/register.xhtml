@@ -37,13 +37,13 @@ and open the template in the editor.
                 
                 <li>
                     password<h:inputText id="password" required="true" value="#{user.password}" requiredMessage="Please enter a valid password">
-                                    <f:validateRegex pattern="[A-Za-z]{6,}"/>
+                                    <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})"/>
                             </h:inputText>   
                 </li>
                 
                  <li>
                      password_confirm<h:inputText id="password_c" required="true"  value="#{user.password_c}"  requiredMessage="Please enter a valid password" >
-                                            <f:validateRegex pattern="[A-Za-z]{6,}"/>
+                                            <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})"/>
                                     </h:inputText>   
                 </li>
                 

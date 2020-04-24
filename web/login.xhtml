@@ -6,7 +6,8 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html  xmlns="http://www.w3.org/1999/xhtml"   
-      xmlns:h="http://java.sun.com/jsf/html">
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <h:head>
         <title>TODO supply a title</title>
@@ -15,16 +16,22 @@ and open the template in the editor.
     <h:body>
         <div>Login page</div>
         
+        <p>#{user.errorLogin}</p>
+        
         <h:form>
             <ol>
                 <li>
-                    <h:inputText id="name" value="#{user.name}"/> 
+                    Email<h:inputText id="name" value="#{user.email}" required="true" requiredMessage="Lütfen geçerli bir email adresi griniz">
+                            <f:validateRegex pattern="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"/>
+                        </h:inputText>
                 </li>
                 <li>
-                    <h:inputText id="password" value="#{user.password}"/>   
+                    Password<h:inputText id="password" value="#{user.password}" required="true" requiredMessage="Lütfen geçerli bir şifre giriniz">
+                                <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})"/>
+                            </h:inputText>   
                 </li>
                 <li>
-                    <h:commandButton type="submit" value="Login bruh" action="#{controller.goToLoginPage()}"/>
+                    <h:commandButton type="submit" value="Login bruh" action="#{user.login()}"/>
                 </li>     
                 
            
