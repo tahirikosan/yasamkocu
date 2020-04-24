@@ -15,12 +15,115 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean
 public class User {
+    private int id;
     private String name;
     private String password;
+    private String email;
+    private String surname;
+    private int age;
+    private String gender;
+    private int height;
+    private int weight;
+    
+    private String password_c;
+    private String errorRegister; 
+
+    public String getErrorRegister() {
+        return errorRegister;
+    }
+
+    public void setErrorRegister(String errorRegister) {
+        this.errorRegister = errorRegister;
+    }
+    
     
     public User(){
-       
     }
+
+    public User(int id, String name, String email, String password, String surname, int age, String gender, int height, int weight) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.surname = surname;
+        this.age = age;
+        this.gender = gender;
+        this.height = height;
+        this.weight = weight;
+    }
+
+    public String getPassword_c() {
+        return password_c;
+    }
+
+    public void setPassword_c(String password_c) {
+        this.password_c = password_c;
+    }
+    
+    
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+ 
+  
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+ 
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+  
 
     public String getName() {
         return name;
@@ -38,10 +141,43 @@ public class User {
         this.password = password;
     }
     
-    public String deneme(){
-        DBLayer db = new DBLayer();
-        return db.userList();
+    public String register(){
+        
+        if(validate()){
+             DBLayerTahir db = new DBLayerTahir();
+            boolean result = db.registerUser(this);
+
+            if(result){
+               return "login.xhtml";
+            }else{
+                errorRegister = "Kayıt işlemi yapılamadı lütfen tekrar deneyiniz.";
+               return "register.xhtml";
+            }
+        }else{
+            errorRegister = "Şifreler aynı olmalı";
+            return "register.xhtml";
+        }
        
     }
+    
+    private boolean validate(){
+        
+        if(password.equals(password_c)){
+            return true;
+        }
+        
+        return false;
+    }
+    
+   /* public void login(){
+        DBLayerTahir db = new DBLayerTahir();
+        boolean result = db.loginUser(this);
+        
+        if(result){
+            return "main_menu.xhtml";
+        }else{
+            return "login.xhtml";
+        }
+    }*/
        
 }
