@@ -47,6 +47,18 @@ and open the template in the editor.
                                     </h:inputText>   
                 </li>
                 
+                <li>
+                    Age<h:inputText id="age"  required="true" value="#{user.age}" requiredMessage="Please enter a valid age"/> 
+                </li>
+                
+                 <li>
+                    Height<h:inputText id="height"  required="true" value="#{user.height}" requiredMessage="Please enter a valid height"/> 
+                </li>
+                
+                 <li>
+                    weight<h:inputText id="weight"  required="true" value="#{user.weight}" requiredMessage="Please enter a valid weight"/> 
+                </li>
+                
                 
                 <li>
                     <h:selectOneRadio value="#{user.gender}" required="true"  requiredMessage="Please choose gender">

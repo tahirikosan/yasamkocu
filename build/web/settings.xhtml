@@ -5,18 +5,17 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html  xmlns="http://www.w3.org/1999/xhtml"   
+<html xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
-    
-    <h:head>
+    <head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </h:head>
-    <h:body>
-        <div>Registering page</div>
+    </head>
+    <body>
+        <div>Settings</div>
         
-        <h:form>
+         <h:form>
             <ol>
                 
                 <p>#{user.errorRegister}</p>
@@ -29,11 +28,7 @@ and open the template in the editor.
                     Surname<h:inputText id="surname"  required="true" value="#{user.surname}" requiredMessage="Please enter a valid surname"/> 
                 </li>
                 
-                <li>
-                    email <h:inputText id="emailInputText" required="true" requiredMessage="Please enter a valid e-mail address" value="#{user.email}" validatorMessage="Invalid e-mail address format">
-                                <f:validateRegex pattern="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
-                          </h:inputText>
-                </li>
+       
                 
                 <li>
                     password<h:inputText id="password" required="true" value="#{user.password}" requiredMessage="Please enter a valid password">
@@ -47,7 +42,7 @@ and open the template in the editor.
                                     </h:inputText>   
                 </li>
                 
-                <li>
+                 <li>
                     Age<h:inputText id="age"  required="true" value="#{user.age}" requiredMessage="Please enter a valid age"/> 
                 </li>
                 
@@ -68,11 +63,12 @@ and open the template in the editor.
                 </li>
                 
                 <li>
-                    <h:commandButton type="submit" value="Register bruh" action="#{user.register()}"/>
+                    <h:commandButton type="submit" value="Kaydet" action="#{user.update()}"/>
                 </li>               
                 
             </ol>
          
         </h:form>
-    </h:body>
+        
+    </body>
 </html>
