@@ -2,6 +2,8 @@
 import java.text.DateFormat;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,6 +16,7 @@ import javax.faces.bean.ManagedBean;
  * @author Tahir
  */
 @ManagedBean
+@SessionScoped
 public class User {
     private int id;
     private String name;
@@ -154,6 +157,7 @@ public class User {
         
         if(validate()){
              DBLayerTahir db = new DBLayerTahir();
+              db.connect();
             boolean result = db.registerUser(this);
 
             if(result){
@@ -180,6 +184,7 @@ public class User {
     
     public String login(){
         DBLayerTahir db = new DBLayerTahir();
+        db.connect();
         boolean result = db.loginUser(this);
         
         if(result){
@@ -188,6 +193,25 @@ public class User {
             errorLogin = "Kullanıcı adı veya şifre yanlış";
             return "login.xhtml";
         }
+    }
+    
+    
+    public String update(){
+       
+        if(validate()){
+           DBLayerTahir db = new DBLayerTahir();
+           db.connect();
+           boolean result = db.updateUser(this);
+           
+           if(result){
+               return "profile.xhtml";
+           }else{
+               return "login.xhtml";
+           }
+        }else{
+            return "main_menu.xhtml";
+        }
+       
     }
        
 }

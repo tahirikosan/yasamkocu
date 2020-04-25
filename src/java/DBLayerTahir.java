@@ -141,14 +141,45 @@ public class DBLayerTahir {
         return false;
     }
     
+    public boolean updateUser(User user){
+        
+        if(conn == null){
+            connect();
+        }
+        
+        try {
+            String query = "SELECT * FROM kullanici WHERE email = '" +user.getEmail()+"'";
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(query);
+       
+            while(result.next()){
+                System.out.println(result.getString(2));
+                query = "UPDATE kullanici SET name='"+user.getName()+"', surname='"+user.getSurname()+"', password='"+user.getPassword()+"', gender='"+user.getGender()+"',  height="+user.getHeight()+", weight="+user.getWeight()+", age="+user.getAge()+" WHERE id = " +result.getInt(1)+ "";
+                int rs = statement.executeUpdate(query);
+                
+                if(rs == 1){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Update user error " + e.toString());
+        }  
+        
+        return false;
+    }
+    
     public static void main(String[] args) {
         DBLayerTahir db = new DBLayerTahir();
         
         db.connect();
         
-        User user = new User(1, "mokok",  "mokok",  "mokok",  "mokok", 0,  "mokko", 0, 0);
+        User user = new User(1, "degıstı",  "c@gmail.com",  "Silgi123",  "degıstı", 100,  "degıstı", 99, 0);
         //db.registerUser(user);
-        db.loginUser(user);
+        //db.loginUser(user);
+        db.updateUser(user);
         
         
     }
