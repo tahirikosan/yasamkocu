@@ -9,11 +9,13 @@
  * @author Eda
  */
 
+import java.io.Serializable;
 import java.util.Date;
-import javax.faces.bean.ManagedBean;
+import java.util.List;
 
-@ManagedBean
-public class Blog {
+
+
+public class Blog implements Serializable{
     private int id;
     private String title;
     private String author;
@@ -22,9 +24,11 @@ public class Blog {
     private String label;
     private String imageUrl;
     
+    
     public Blog(){
         
     }
+
 
     public String getImageUrl() {
         return imageUrl;
@@ -81,17 +85,9 @@ public class Blog {
     public void setLabel(String label) {
         this.label = label;
     }
-    
-    /*public void titleList(){
-        
-    }
-    
-    public void imageUrlList(){
-        
-    }*/
-    
+    /*
     public void displayBlog(){
         
-    }
-    
+        
+    }*/
 }

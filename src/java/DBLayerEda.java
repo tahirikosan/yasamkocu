@@ -4,6 +4,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -45,24 +47,37 @@ public class DBLayerEda {
         return conn;
     }
     
-    public String  blogList(){
+    public List<Blog> blogList() {
         if(conn == null){
             System.out.println("Bağlantı sağlanamadı, yeniden bağlanıyor...");
             connect();
         }
+        
+        List<Blog> blogs = new ArrayList<Blog>();
         
         try{
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM LIFECOACH.BLOG");
             
             while(result.next()){
-              return result.getString(BLOG_ID) + " " + result.getString(BLOG_TITLE) + " " + result.getString(BLOG_AUTHOR);
+              Blog blog = new Blog();
+              blog.setId(result.getInt(BLOG_ID));
+              blog.setTitle(result.getString(BLOG_TITLE));
+              blog.setAuthor(result.getString(BLOG_AUTHOR));
+              blog.setContent(result.getString(BLOG_CONTENT));
+              blog.setAuthor(result.getString(BLOG_AUTHOR));
+              blog.setDate(result.getDate(BLOG_DATE));
+              blog.setLabel(result.getString(BLOG_LABEL));
+              
+              blogs.add(blog);
             }
-            
+            result.close();
+            statement.close();
         }catch(SQLException e){
             System.out.println("Veriler getirilirken bir hata oluştu! \n" + e.toString());
+ 
         }
-        
-        return "null_2";
+       
+        return blogs;
     }
 }
