@@ -19,12 +19,12 @@ import java.util.List;
  */
 public class DBLayerEda {
     //column names
-    private int BLOG_ID = 0;
-    private int BLOG_TITLE = 1;
-    private int BLOG_AUTHOR = 2;
-    private int BLOG_CONTENT = 3;
-    private int BLOG_DATE = 4;
-    private int BLOG_LABEL = 5;
+    private int BLOG_ID = 1;
+    private int BLOG_TITLE = 2;
+    private int BLOG_AUTHOR = 3;
+    private int BLOG_CONTENT = 4;
+    private int BLOG_DATE = 5;
+    private int BLOG_LABEL = 6;
     
     
     private Connection conn;
@@ -68,7 +68,7 @@ public class DBLayerEda {
               blog.setAuthor(result.getString(BLOG_AUTHOR));
               blog.setDate(result.getDate(BLOG_DATE));
               blog.setLabel(result.getString(BLOG_LABEL));
-              
+              //System.out.println(blog.getTitle());
               blogs.add(blog);
             }
             result.close();
@@ -80,4 +80,10 @@ public class DBLayerEda {
        
         return blogs;
     }
+    
+    /*public static void main(String[] args){
+        DBLayerEda db = new DBLayerEda();
+        List<Blog> deneme = db.blogList();
+  
+    }*/
 }

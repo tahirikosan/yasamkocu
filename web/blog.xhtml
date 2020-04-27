@@ -9,9 +9,9 @@
     </h:head>  
     <h:body>  
     <h3>List students</h3>
-    <h:form rendered="#{not empty BlogBean.blogList}">
-        <h:dataTable value="#{BlogBean.blogList}" var="item">
-            <h:column><f:facet name="header">ID</f:facet>#{item.Title}</h:column>
+    <h:form>
+        <h:dataTable value="#{blogb.getBlogList()}" var="item">
+            <h:column><f:facet name="header">Title</f:facet>#{item.title}</h:column>
         </h:dataTable>
     </h:form>
     </h:body>  

@@ -15,7 +15,7 @@ import java.util.List;
 
 
 
-public class Blog implements Serializable{
+public class Blog{
     private int id;
     private String title;
     private String author;
@@ -85,9 +85,5 @@ public class Blog implements Serializable{
     public void setLabel(String label) {
         this.label = label;
     }
-    /*
-    public void displayBlog(){
-        
-        
-    }*/
+    
 }
