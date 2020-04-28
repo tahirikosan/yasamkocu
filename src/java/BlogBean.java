@@ -16,18 +16,42 @@ import javax.faces.bean.SessionScoped;
  * @author Eda
  */
 
-@ManagedBean(name="blogb")
+@ManagedBean(name="blogBean")
 @SessionScoped
 public class BlogBean implements Serializable{
     private DBLayerEda db = new DBLayerEda();
     private List<Blog> blogList = db.blogList();
+    private int selectedBlogID = 2;
+    private Blog selectedBlog = new Blog();
     
-
     public void BlogBean() {
-        //db.connect();
-        //this.blogList = new ArrayList();
-        //this.blogList = db.blogList();
+        
     }
+
+    public int getSelectedBlogID() {
+        return selectedBlogID;
+    }
+
+    public void setSelectedBlogID(int selectedBlogID) {
+        this.selectedBlogID = selectedBlogID;
+    }
+
+    public DBLayerEda getDb() {
+        return db;
+    }
+
+    public void setDb(DBLayerEda db) {
+        this.db = db;
+    }
+
+    public Blog getSelectedBlog() {
+        return selectedBlog;
+    }
+
+    public void setSelectedBlog(Blog selectedBlog) {
+        this.selectedBlog = selectedBlog;
+    }
+    
 
     public List<Blog> getBlogList() {
         return blogList;
@@ -37,11 +61,15 @@ public class BlogBean implements Serializable{
         this.blogList = blogList;
     }
     
-    /*public static void main(String[] args){
-        BlogBean yeni = new BlogBean();
-        for(int i = 1; i < 2; i++){
-            System.out.println(yeni.getBlogList().get(i).getTitle());
-        }
+    public void findBlog(){
+        //System.out.println(this.selectedBlogID);
+        this.selectedBlog =  db.findBlog(this.selectedBlogID);
+        //return "blogDisplay.xhtml";
+    }
+    
+    /* public static void main(String[] args){
+        BlogBean yeniBean = new BlogBean();
+        System.out.println(yeniBean.getSelectedBlog().getTitle());
   
     }*/
 }

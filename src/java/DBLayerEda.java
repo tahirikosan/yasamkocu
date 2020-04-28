@@ -25,6 +25,7 @@ public class DBLayerEda {
     private int BLOG_CONTENT = 4;
     private int BLOG_DATE = 5;
     private int BLOG_LABEL = 6;
+    private int BLOG_IMAGE_URL = 7;
     
     
     private Connection conn;
@@ -68,7 +69,8 @@ public class DBLayerEda {
               blog.setAuthor(result.getString(BLOG_AUTHOR));
               blog.setDate(result.getDate(BLOG_DATE));
               blog.setLabel(result.getString(BLOG_LABEL));
-              //System.out.println(blog.getTitle());
+              blog.setImageUrl(result.getString(BLOG_IMAGE_URL));
+              //System.out.println(blog.getImageUrl());
               blogs.add(blog);
             }
             result.close();
@@ -81,9 +83,40 @@ public class DBLayerEda {
         return blogs;
     }
     
+        public Blog findBlog(int id) {
+        if(conn == null){
+            System.out.println("Bağlantı sağlanamadı, yeniden bağlanıyor...");
+            connect();
+        }
+        
+        Blog blog = new Blog();
+        
+        try{
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM LIFECOACH.BLOG WHERE ID=" + id);
+            
+            result.next();
+            
+            blog.setId(result.getInt(BLOG_ID));
+            blog.setTitle(result.getString(BLOG_TITLE));
+            blog.setAuthor(result.getString(BLOG_AUTHOR));
+            blog.setContent(result.getString(BLOG_CONTENT));
+            blog.setAuthor(result.getString(BLOG_AUTHOR));
+            blog.setDate(result.getDate(BLOG_DATE));
+            blog.setLabel(result.getString(BLOG_LABEL));
+            blog.setImageUrl(result.getString(BLOG_IMAGE_URL));
+            result.close();
+            statement.close();
+        }catch(SQLException e){
+            System.out.println("Veriler getirilirken bir hata oluştu! \n" + e.toString());
+ 
+        }
+       
+        return blog;
+    }
+    
     /*public static void main(String[] args){
         DBLayerEda db = new DBLayerEda();
-        List<Blog> deneme = db.blogList();
-  
+        Blog yeni = db.findBlog(2);
     }*/
 }

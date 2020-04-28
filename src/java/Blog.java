@@ -24,7 +24,6 @@ public class Blog{
     private String label;
     private String imageUrl;
     
-    
     public Blog(){
         
     }
