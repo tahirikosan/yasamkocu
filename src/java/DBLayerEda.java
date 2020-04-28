@@ -83,7 +83,7 @@ public class DBLayerEda {
         return blogs;
     }
     
-        public Blog findBlog(int id) {
+    public Blog findBlog(int id) {
         if(conn == null){
             System.out.println("Bağlantı sağlanamadı, yeniden bağlanıyor...");
             connect();

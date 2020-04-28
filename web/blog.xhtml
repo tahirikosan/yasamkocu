@@ -11,7 +11,7 @@
  
     <h1>List Blog Texts</h1>
         <h:form>
-            <ui:repeat var="text" value="#{blogBean.getBlogList()}">
+            <ui:repeat var="text" value="#{BlogBean.getBlogList()}">
                 <h2>#{text.title}</h2>
                 <h6>#{text.imageUrl}</h6>
                 <h6>#{text.author}</h6>
@@ -21,8 +21,8 @@
             </ui:repeat>
         </h:form>
          <h:form>
-            <h:inputText value="#{BlogBean.selectedblogID}"/>
-            <h:commandButton value="do it bruh" action="#{BlogBean.findBlog()}"/>
+            <h:inputText value="#{BlogBean.id}"/>
+            <h:commandButton value="do it bruh" action="#{BlogBean.getBlog()}"/>
         </h:form>
     </h:body>  
 </html>  
