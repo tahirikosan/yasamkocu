@@ -60,8 +60,10 @@ public class UserRecipe {
         this.readingDate = readingDate;
     }
     
-    public void getUserRecipeListByLabel(){
-        
+    public int getUserRecipeListByLabel(int userid, String label){
+        DBLayerEda db = new DBLayerEda();
+        int number = db.userRecipeNumberByLabel(userid, label);
+        return number;
     }
     
     public void getUserRecipeByLabelAndDate(){
@@ -71,6 +73,6 @@ public class UserRecipe {
     public void recipeMade(int userid, int recipeid){
         DBLayerEda db = new DBLayerEda();
         db.UserRecipeTried(userid, recipeid);
-        
     }
+    
 }

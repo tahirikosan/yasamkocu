@@ -65,6 +65,7 @@ public class DBLayerEda {
         return conn;
     }
     
+    //insert a new record to USER_RECIPES table
     public void UserRecipeTried(int userid, int recipeid){
         if(conn == null){
             connect();
@@ -91,32 +92,26 @@ public class DBLayerEda {
     }
     
     
-    /*
-    //returns records with matching label from USER_RECIPES table as a List<Recipe> object
-    public List<UserRecipe> userRecipeList(int userid) {
+    
+    //returns the number of records with matching label and userid from USER_RECIPES table
+    public int userRecipeList(int userid, String label) {
         if(conn == null){
             System.out.println("Bağlantı sağlanamadı, yeniden bağlanıyor...");
             connect();
         }
         
-        List<UserRecipe> userRecipes = new ArrayList<UserRecipe>();
+        int number = 0;
         
         try{
             Statement statement = conn.createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM LIFECOACH.USER_RECIPES WHERE USERID="+userid);
+            ResultSet result = statement.executeQuery("SELECT count(*) FROM USER_RECIPES INNER JOIN FIT_RECIPES ON USER_RECIPES.RECIPEID=FIT_RECIPES.ID WHERE USER_RECIPES.USERID="+userid+" AND FIT_RECIPES.LABEL='"+label+"'");
             
-            while(result.next()){
-              UserRecipe userRecipe = new UserRecipe();
-              userRecipe.setId(result.getInt(USER_RECIPES_ID));
-              userRecipe.setUserid(result.getInt(USER_RECIPES_USER_ID));
-              userRecipe.setRecipeid(result.getInt(USER_RECIPES_RECIPE_ID));
-              userRecipe.setReadingDate(result.getDate(USER_RECIPES_READING_DATE));
-              
-              Statement statement2 = conn.createStatement();
-              ResultSet result2 = statement.executeQuery("SELECT * FROM LIFECOACH.FIT_RECIPES WHERE RECIPEID="+);
-              
-              userRecipes.add(userRecipe);
-            }
+            result.next();
+            
+            number = result.getInt(1);
+            
+            System.out.println(number);
+            
             result.close();
             statement.close();
         }catch(SQLException e){
@@ -124,8 +119,8 @@ public class DBLayerEda {
  
         }
        
-        return userRecipes;
-    }*/
+        return number;
+    }
     
     
     //returns all the record from FIT_RECIPES table as a List<Recipe> object
@@ -263,10 +258,10 @@ public class DBLayerEda {
         return blog;
     }
     
-    /*public static void main(String[] args){
+    public static void main(String[] args){
         DBLayerEda db = new DBLayerEda();
-        boolean sonuc = db.UserRecipeTried(8, 3);
-    }*/
+        int number = db.userRecipeList(3, "normal");
+    }
 
     
 }
