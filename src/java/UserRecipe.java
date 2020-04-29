@@ -66,8 +66,9 @@ public class UserRecipe {
         return number;
     }
     
-    public void getUserRecipeByLabelAndDate(){
-        
+    public int getUserRecipeByLabelAndDate(){
+        int number = 0;
+        return number;
     }
     
     public void recipeMade(int userid, int recipeid){
