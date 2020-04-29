@@ -70,7 +70,7 @@ public class UserRecipe {
     
     public void recipeMade(int userid, int recipeid){
         DBLayerEda db = new DBLayerEda();
-        boolean sonuc = db.UserRecipeTried(userid, recipeid);
+        db.UserRecipeTried(userid, recipeid);
         
     }
 }

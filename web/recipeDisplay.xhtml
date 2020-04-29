@@ -24,7 +24,7 @@ and open the template in the editor.
             <p>#{RecipeBean.content}</p>
         </h:form>
         <h:form>
-            <h:commandButton value="Bugün bu tarifi yaptım." type="submit" action="#{user.goLoginPage}" />
+            <h:commandButton value="Bugün bu tarifi yaptım." type="submit" action="#{UserRecipeBean.recipeMade(User.id, RecipeBean.id)}" />
         </h:form>
     </h:body>
 </html>

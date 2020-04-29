@@ -40,10 +40,10 @@ public class DBLayerEda {
     private int FIT_RECIPES_IMAGE_URL = 7;
     
     //column names for USER_RECIPES table
-    private int USER_RECIPES_ID = 1;
-    private int USER_RECIPES_USER_ID = 2;
-    private int USER_RECIPES_READING_DATE = 3;
-    private int USER_RECIPES_RECIPE_ID = 4;
+    //private int USER_RECIPES_ID = 1;
+    private int USER_RECIPES_USER_ID = 1;
+    private int USER_RECIPES_READING_DATE = 2;
+    private int USER_RECIPES_RECIPE_ID = 3;
     
     //database connection config
     private Connection conn;
@@ -65,36 +65,29 @@ public class DBLayerEda {
         return conn;
     }
     
-    public boolean UserRecipeTried(int userid, int recipeid){
+    public void UserRecipeTried(int userid, int recipeid){
         if(conn == null){
             connect();
         }
         
         try{
            
-            String query = "INSERT INTO LIFECOACH.USER_RECIPES (USERID, READINGDATE, RECIPEID) VALUES (?,?,?)";
+            String query = "INSERT INTO LIFECOACH.USER_RECIPES (USERID, READINGDATE, RECIPEID) VALUES (?, ?, ?)";
             
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(USER_RECIPES_USER_ID, userid);
-            Date utilDate = new Date();
+            java.util.Date utilDate = new java.util.Date();
             java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-            statement.setDate(USER_RECIPES_READING_DATE, sqlDate);
+            statement.setDate(USER_RECIPES_READING_DATE, java.sql.Date.valueOf(java.time.LocalDate.now()));
             statement.setInt(USER_RECIPES_RECIPE_ID, recipeid);
             
             int result = statement.executeUpdate();
           
             
-            if(result == 1){
-                return true;
-            }else{
-                return false;
-            }
-            
         }catch(SQLException e){
             System.out.println(e.toString());
         }
         
-        return false;
     }
     
     
@@ -270,10 +263,10 @@ public class DBLayerEda {
         return blog;
     }
     
-    public static void main(String[] args){
+    /*public static void main(String[] args){
         DBLayerEda db = new DBLayerEda();
         boolean sonuc = db.UserRecipeTried(8, 3);
-    }
+    }*/
 
     
 }
