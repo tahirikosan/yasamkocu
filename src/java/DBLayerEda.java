@@ -93,8 +93,35 @@ public class DBLayerEda {
     
     
     
-    //returns the number of records with matching label and userid from USER_RECIPES table
-    public int userRecipeList(int userid, String label) {
+    //returns the number of records with specified label and userid from USER_RECIPES table
+    public int userRecipeNumberByLabel(int userid, String label) {
+        if(conn == null){
+            System.out.println("Bağlantı sağlanamadı, yeniden bağlanıyor...");
+            connect();
+        }
+        
+        int number = 0;
+        
+        try{
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery("SELECT count(*) FROM USER_RECIPES INNER JOIN FIT_RECIPES ON USER_RECIPES.RECIPEID=FIT_RECIPES.ID WHERE USER_RECIPES.USERID="+userid+" AND FIT_RECIPES.LABEL='"+label+"'");
+            
+            result.next();
+            
+            number = result.getInt(1);
+         
+            result.close();
+            statement.close();
+        }catch(SQLException e){
+            System.out.println("Veriler getirilirken bir hata oluştu! \n" + e.toString());
+ 
+        }
+       
+        return number;
+    }
+    
+    //returns the number of records with specified label,date and userid from USER_RECIPES table
+    public int userRecipeNumberByLabelAndDate(int userid, String label, Date date) {
         if(conn == null){
             System.out.println("Bağlantı sağlanamadı, yeniden bağlanıyor...");
             connect();
@@ -258,10 +285,10 @@ public class DBLayerEda {
         return blog;
     }
     
-    public static void main(String[] args){
+    /*public static void main(String[] args){
         DBLayerEda db = new DBLayerEda();
         int number = db.userRecipeList(3, "normal");
-    }
+    }*/
 
     
 }

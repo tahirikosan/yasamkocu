@@ -66,9 +66,9 @@ public class UserRecipe {
         return number;
     }
     
-    public int getUserRecipeByLabelAndDate(){
-        int number = 0;
-        return number;
+    public void getUserRecipeByLabelAndDate(int userid, String label, Date readingDate){
+        DBLayerEda db = new DBLayerEda();
+        db.userRecipeNumberByLabelAndDate(userid, label, readingDate);
     }
     
     public void recipeMade(int userid, int recipeid){
