@@ -10,19 +10,17 @@
     <h:body>  
  
     <h1>List Blog Texts</h1>
+    
         <h:form>
-            <ui:repeat var="text" value="#{BlogBean.getBlogList()}">
-                <h2>#{text.title}</h2>
-                <h6>#{text.imageUrl}</h6>
-                <h6>#{text.author}</h6>
-                <h6>#{text.date}</h6>
-                <h6>#{text.label}</h6>
-                <p>#{text.content}</p>
+            <ui:repeat var="text" value="#{RecipeBean.getRecipeList()}">
+                <h:panelGroup layout="block" id="container">
+                    <h:commandLink action="#{RecipeBean.getRecipe(text.id)}" style="display:block;">
+                        <h2>#{text.title}</h2>
+                        <h4>#{text.imageUrl}</h4>
+                    </h:commandLink>
+                </h:panelGroup>
             </ui:repeat>
         </h:form>
-         <h:form>
-            <h:inputText value="#{BlogBean.id}"/>
-            <h:commandButton value="do it bruh" action="#{BlogBean.getBlog()}"/>
-        </h:form>
+         
     </h:body>  
 </html>  

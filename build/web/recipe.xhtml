@@ -9,14 +9,14 @@
     </h:head>  
     <h:body>  
  
-    <h1>List Blog Texts</h1>
+    <h1>List Recipes</h1>
     
         <h:form>
-            <ui:repeat var="text" value="#{RecipeBean.getRecipeList()}">
+            <ui:repeat var="recipe" value="#{RecipeBean.getRecipeList()}">
                 <h:panelGroup layout="block" id="container">
-                    <h:commandLink action="#{RecipeBean.getRecipe(text.id)}" style="display:block;">
-                        <h2>#{text.title}</h2>
-                        <h4>#{text.imageUrl}</h4>
+                    <h:commandLink action="#{RecipeBean.getRecipe(recipe.id)}" style="display:block;">
+                        <h2>#{recipe.title}</h2>
+                        <h4>#{recipe.imageUrl}</h4>
                     </h:commandLink>
                 </h:panelGroup>
             </ui:repeat>

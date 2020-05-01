@@ -97,10 +97,11 @@ public class Blog implements Serializable{
         return blogs;
     }
     
-    public String getBlog(){
+    public String getBlog(int id){
         DBLayerEda db = new DBLayerEda();
         Blog selectedBlog = new Blog();
         selectedBlog = db.findBlog(id);
+        this.id = id;
         this.author = selectedBlog.getAuthor();
         this.content = selectedBlog.getContent();
         this.date = selectedBlog.getDate();
