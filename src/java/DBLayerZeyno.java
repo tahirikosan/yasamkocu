@@ -33,7 +33,7 @@ public class DBLayerZeyno implements Serializable{
     
     
     private int USERID = 4;
-    private String DATE="" ;
+    private String NDATE="" ;
     private int NUTRITIONID = 5;
     private int NUTRITIONGR = 6;
     
@@ -116,7 +116,7 @@ public class DBLayerZeyno implements Serializable{
       return records;
    }
     
-      public void getTotal() {
+      public void getTotalCalNutrition() {
       ResultSet rs = null;
       PreparedStatement pst = null;
       Connection con = connect();
@@ -227,15 +227,182 @@ public class DBLayerZeyno implements Serializable{
         
         return false;
     }
+    public boolean AddExercise(Exercise exercise){
+        if(conn == null){
+            connect();
+        }
+        
+        try{
+           
+            String query = "INSERT INTO exercise(name, cal, imageurl) VALUES (?,?,?)";
+         
+            
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setString(NAME, exercise. getName());
+            statement.setInt(CAL, exercise.getCal());
+            statement.setString(IMAGEURL, exercise.getImageurl());
+            
+            int result = statement.executeUpdate();
+          
+            
+            if(result == 1){
+                return true;
+            }else{
+                return false;
+            }
+            
+        }catch(SQLException e){
+            System.out.println(e.toString());
+        }
+        
+        return false;
+    }
+      public List<Exercise> getExercises() {
+      ResultSet rs = null;
+      PreparedStatement pst = null;
+      Connection con = connect();
+      String stm = "Select * from exercise";
+      List<Exercise> records = new ArrayList<Exercise>();
+      
+      try {
+        
+         pst = con.prepareStatement(stm);
+         pst.execute();
+         rs = pst.getResultSet();
+         
+         while(rs.next()) {
+            Exercise exercise = new Exercise();
+            exercise.setId(rs.getInt(1));
+            exercise.setName(rs.getString(2));
+            exercise.setCal(rs.getInt(3));
+            exercise.setImageurl(rs.getString(4));
+            records.add(exercise);				
+         }
+      } catch (SQLException e) {
+         e.printStackTrace();
+      }
+      for(int i=0; i<records.size();i++)
+      System.out.println(records.get(i).name);
+      return records;
+   }
+      
+      
+            public boolean AddUserExercise(UserExercise x){
+        if(conn == null){
+            connect();
+        }
+        
+        try{
+           
+            String query = "INSERT INTO USER_EXERCISE(USERID,EDATE, EXERCISEID, EXERCISETIME) VALUES (?,?,?,?)";
+         
+            
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, x.getUserid());
+            statement.setString(2,x. getEdate());
+            statement.setInt(3, x.getExerciseid());
+            statement.setInt(4, x.getExercisetime());
+            
+            int result = statement.executeUpdate();
+          
+            
+            if(result == 1){
+                return true;
+            }else{
+                return false;
+            }
+            
+        }catch(SQLException e){
+            System.out.println(e.toString());
+        }
+        
+        return false;
+    }
+            
+ public String DeleteExercise(Exercise exercise){
+        if(conn == null){
+            connect();
+        }
+        try{
+           
+            String query = "DELETE FROM EXERCISE WHERE ID=?";
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, exercise.getId());
+            int result = statement.executeUpdate();
+          
+            
+            if(result == 1){
+                return "exercise.xhtml";
+            }else{
+                 return "basarisiz.xhtml";
+            }
+            
+        }catch(SQLException e){
+            System.out.println(e.toString());
+        }
+        
+        return "basarisiz.xhtml";
+    }
    
-
-   
+  public List<UserExercise> getUserExercises() {
+      ResultSet rs = null;
+      PreparedStatement pst = null;
+      Connection con = connect();
+      String stm = "SELECT USER_EXERCISE.ID,USER_EXERCISE.USERID,USER_EXERCISE.EXERCISEID,USER_EXERCISE.EXERCISETIME,USER_EXERCISE.EDATE,EXERCISE.NAME FROM LIFECOACH.USER_EXERCISE INNER JOIN EXERCISE ON USER_EXERCISE.EXERCISEID=EXERCISE.ID";
+      List<UserExercise> records = new ArrayList<UserExercise>();
+      
+      try {
+        
+         pst = con.prepareStatement(stm);
+         pst.execute();
+         rs = pst.getResultSet();
+         
+         while(rs.next()) {
+           UserExercise exercise = new UserExercise();
+            exercise.setId(rs.getInt(1));
+              exercise.setUserid(rs.getInt(2));
+                exercise.setExerciseid(rs.getInt(3));
+                  exercise.setExercisetime(rs.getInt(4));
+                    exercise.setEdate(rs.getString(5));
+           exercise.setName(rs.getString(6));
+       
+            records.add(exercise);				
+         }
+      } catch (SQLException e) {
+         e.printStackTrace();
+      }
+ 
+      return records;
+   }
+  
+ public void getTotalCalExercise() {
+      ResultSet rs = null;
+      PreparedStatement pst = null;
+      Connection con = connect();
+      String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+      String stm = "SELECT SUM(USER_EXERCISE.EXERCISETIME*EXERCISE.CAL) FROM LIFECOACH.USER_EXERCISE INNER JOIN EXERCISE ON USER_EXERCISE.EXERCISEID=EXERCISE.ID WHERE USER_EXERCISE.EDATE='"+ date+"' GROUP BY USER_EXERCISE.EDATE";
+      
+      try {
+        
+         pst = con.prepareStatement(stm);
+         pst.execute();
+         rs = pst.getResultSet();
+         while(rs.next()){
+        System.out.println(rs.getInt(1));
+         } 
+         
+      } catch (SQLException e) {
+         e.printStackTrace();
+         System.out.println("Error Data : " + e.getMessage());
+      }
+   }
+      
    public static void main(String[] args) {
         DBLayerZeyno db = new DBLayerZeyno();
         //UserNutrition x= new UserNutrition();
        
-       // db.connect();
-       // db.getNutritions();
+       //db.connect();
+       //db.getExercises();
       //db.AddUserNutrition(x);
        //Date today = new Date(); 
        //System.out.println(today);
@@ -243,7 +410,8 @@ public class DBLayerZeyno implements Serializable{
 
 //String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 //System.out.println(date);
-      db.connect();
-       db.getTotal();
+    db.connect();
+   db.getTotalCalNutrition();
+   db.getTotalCalExercise();
     }
  } 

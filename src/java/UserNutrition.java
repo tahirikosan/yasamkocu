@@ -11,15 +11,17 @@ import javax.faces.bean.RequestScoped;
 
 /**
  *
- * @author User
+ * @author Zeyno
  */
 @ManagedBean
 @RequestScoped
 public class UserNutrition {
-     private int id;
+    private int id;
     private int userid;
     private String ndate;
-private String Name;
+    private String Name; 
+    private int nutritionid;
+    private int nutritiongr;
 
     public String getName() {
         return Name;
@@ -36,13 +38,6 @@ private String Name;
     public void setNdate(String ndate) {
         this.ndate = ndate;
     }
-
-   
-  
-  
-   
-     private int nutritionid;
-      private int nutritiongr;
 
     public int getId() {
         return id;
