@@ -10,14 +10,21 @@ and open the template in the editor.
       xmlns:f="http://java.sun.com/jsf/core">
     
     <h:head>
-        <title>Blog Display</title>
+        <title>Recipe Display</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
         <h:form>
-            <h1>#{BlogBean.title}</h1>
-            <p>#{BlogBean.content}</p>
+            <h1>#{RecipeBean.title}</h1>
+            <h3>#{RecipeBean.label}</h3>
+            <h4>Kaç kişilik?</h4>
+            <h5>#{RecipeBean.servings}</h5>
+            <h4>Süre</h4>
+            <h5>#{RecipeBean.prepTime}</h5>
+            <p>#{RecipeBean.content}</p>
         </h:form>
-
+        <h:form>
+            <h:commandButton value="Bugün bu tarifi yaptım." type="submit" action="#{UserRecipeBean.recipeMade(User.id, RecipeBean.id)}" />
+        </h:form>
     </h:body>
 </html>
