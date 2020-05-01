@@ -3,10 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/MEGA/Software/github/yasamkocu/src/java/DBLayerZeyno.java</file>
-            <file>file:/D:/MEGA/Software/github/yasamkocu/src/java/Nutrition.java</file>
-            <file>file:/D:/MEGA/Software/github/yasamkocu/src/java/User.java</file>
-            <file>file:/D:/MEGA/Software/github/yasamkocu/web/nutrition.xhtml</file>
+
+            <file>file:/C:/Users/Eda/Documents/NetBeansProjects/yasamkocu/src/java/DBLayerZeyno.java</file>
+            <file>file:/C:/Users/Eda/Documents/NetBeansProjects/yasamkocu/src/java/Nutrition.java</file>
+            <file>file:/C:/Users/Eda/Documents/NetBeansProjects/yasamkocu/src/java/User.java</file>
+            <file>file:/C:/Users/Eda/Documents/NetBeansProjects/yasamkocu/web/nutrition.xhtml</file>
+
+
+           
+          
+            <file>file:/C:/Users/Eda/Documents/NetBeansProjects/yasamkocu/src/java/Recipe.java</file>
+            <file>file:/C:/Users/Eda/Documents/NetBeansProjects/yasamkocu/web/recipeDisplay.xhtml</file>
+            <file>file:/C:/Users/Eda/Documents/NetBeansProjects/yasamkocu/src/java/UserRecipe.java</file>
+
         </group>
     </open-files>
 </project-private>
