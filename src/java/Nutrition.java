@@ -12,6 +12,8 @@ import javax.faces.bean.RequestScoped;
  *
  * @author Zeyno
  */
+@ManagedBean
+@RequestScoped
 
 public class Nutrition {
     public int id;
@@ -58,9 +60,13 @@ public class Nutrition {
            boolean result = db.AddNutrition(this);
 
             if(result){
-               return "basarili.xhtml";
+               return "nutrition.xhtml";
             }else{
                return "basarisiz.xhtml";
             }
     }
 }
+    
+    
+    
+

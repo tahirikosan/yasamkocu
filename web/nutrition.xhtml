@@ -24,51 +24,50 @@
                         <h:commandButton value="ADD" action="#{nutrition.add()}"/>
             </h:panelGroup>
              </h:form> 
-          <!--  <h:panelGroup>
-                 <h:dataTable value="#{DBLayerZeyno.TablodakiKayitlar()}" var="kayitlar" >
-                <h:column>
-                    <f:facet name="header">
-                       Nutrition
-                    </f:facet>
-                    <h:outputText value="#{kayitlar.name}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        calories
-                    </f:facet>
-                    <h:outputText value="#{kayitlar.cal}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        imgurl
-                    </f:facet>
-                    <h:outputText value="#{kayitlar.imageurl}"/>
-                </h:column>
-            </h:dataTable>
-            </h:panelGroup>
-           <h:graphicImage  value = "http://www.tutorialspoint.com/images/jsf-mini-logo.png"/>-->
+ 
+     
+              <h:panelGroup>
+            <ui:repeat var="c" value="#{zeyno.getNutritions()}">
+               
+                <h:graphicImage  value = "#{c.imageurl}"/>
+                 <h:outputText value="#{c.name}"/> 
+                 <h:form>
+                 <h:inputHidden value="#{c.id}"></h:inputHidden>
+                  <h:outputText value="Enter the Gram"/>
+                  <h:inputText value="#{userNutrition.nutritiongr}" required="true"/>
+                  <h:commandButton value="ADD" action="#{userNutrition.userAdd()}"/>
+                 </h:form>
+                 <h:form>
+                 <h:commandButton value="SIL" action="#{zeyno.DeleteNutrition(c)}"/>
+                 </h:form>
+            </ui:repeat>
+              </h:panelGroup>
+       
+    
+            <h:panelGroup>
+                <h2>What did you eat today?</h2>
+             <h:dataTable value = "#{zeyno.getUserNutritions()}" var = "c">
+                
+                 <h:column>
+      <f:facet name = "header">Nutrition Name </f:facet>
+      #{c.name}
+   </h:column>
+    <h:column>
+      <f:facet name = "header">Gram</f:facet>
+      #{c.nutritiongr}
+   </h:column>
+      <!-- 
+                <h:outputText value="Total:"/>
+                <h:outputText value="#{zeyno.total}"/>
+                  
+            
+                 -->
+             </h:dataTable> 
+</h:panelGroup>  
+
+       
+            
           
-              
-    	
-        <h:dataTable value = "#{DBLayerZeyno.Nutritions}" var = "c">
-         
-         <h:column><f:facet name = "header">id</f:facet>
-             <h:outputText value="#{c.id}"/>
-         </h:column>
-         
-         <h:column><f:facet name = "header">Name</f:facet>
-            <h:outputText value="#{c.name}"/>
-         </h:column>
-               <h:column><f:facet name = "header">cal</f:facet>
-            <h:outputText value="#{c.cal} "/>
-         </h:column>
-               <h:column>
-                   <f:facet name = "header">imageurl</f:facet>
-           <h:outputText value="#{c.imageurl}"/>
-         </h:column>
-      </h:dataTable>
-      
-      
     </h:body>
 </html>
 
