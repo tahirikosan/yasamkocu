@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Facelet Title</title>
      
@@ -21,13 +22,13 @@
                         <h:outputText value="Enter the image url"/>
                         <h:inputText value="#{nutrition.imageurl}"/><br></br>
                         
-                        <h:commandButton value="ADD" action="#{nutrition.add()}"/>
+                        <h:commandButton value="ADD" action="#{nutrition.add(user.id)}"/>
             </h:panelGroup>
              </h:form> 
  
      
               <h:panelGroup>
-            <ui:repeat var="c" value="#{zeyno.getNutritions()}">
+            <c:forEach var="c" items="#{zeyno.getNutritions(user.id)}">
                
                 <h:graphicImage  value = "#{c.imageurl}"/>
                  <h:outputText value="#{c.name}"/> 
@@ -35,18 +36,19 @@
                  <h:inputHidden value="#{c.id}"></h:inputHidden>
                   <h:outputText value="Enter the Gram"/>
                   <h:inputText value="#{userNutrition.nutritiongr}" required="true"/>
-                  <h:commandButton value="ADD" action="#{userNutrition.userAdd()}"/>
+                  <h:commandButton value="ADD" action="#{zeyno.AddUserNutrition(c.id,userNutrition.nutritiongr,user.id)}"/>
                  </h:form>
-                 <h:form>
-                 <h:commandButton value="SIL" action="#{zeyno.DeleteNutrition(c)}"/>
-                 </h:form>
-            </ui:repeat>
+                  <h:form>
+                     <h:commandButton value="SIL" action="#{zeyno.DeleteNutrition(c.id,user.id)}"/>
+                 </h:form>  
+             
+                 </c:forEach>
               </h:panelGroup>
        
     
             <h:panelGroup>
                 <h2>What did you eat today?</h2>
-             <h:dataTable value = "#{zeyno.getUserNutritions()}" var = "c">
+             <h:dataTable value = "#{zeyno.getUserNutritions(user.id)}" var = "c">
                 
                  <h:column>
       <f:facet name = "header">Nutrition Name </f:facet>
@@ -55,19 +57,18 @@
     <h:column>
       <f:facet name = "header">Gram</f:facet>
       #{c.nutritiongr}
-   </h:column>
-     
-                <h:outputText value="Total:"/>
-                <h:outputText value="#{zeyno.getTotalCalNutrition()}"/>
-                  
-            
-                
+    </h:column>  <h:column>
+                 <h:form>
+                     <h:commandButton value="SIL" action="#{zeyno.DeleteUserNutrition(c.id)}"/>
+                 </h:form>  
+    </h:column>         
              </h:dataTable> 
-</h:panelGroup>  
-
-       
-            
-          
+           </h:panelGroup>  
+     
+       <h:panelGroup>
+                <h:outputText value="Total:"/>
+                <h:outputText value="#{zeyno.getTotalCalNutrition(user.id)}"/>
+            </h:panelGroup>
     </h:body>
 </html>
 

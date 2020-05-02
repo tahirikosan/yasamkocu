@@ -12,9 +12,9 @@
     <h1>List Blog Texts</h1>
     
         <h:form>
-            <ui:repeat var="text" value="#{RecipeBean.getRecipeList()}">
+            <ui:repeat var="text" value="#{BlogBean.getBlogList()}">
                 <h:panelGroup layout="block" id="container">
-                    <h:commandLink action="#{RecipeBean.getRecipe(text.id)}" style="display:block;">
+                    <h:commandLink action="#{BlogBean.getBlog(text.id)}" style="display:block;">
                         <h2>#{text.title}</h2>
                         <h4>#{text.imageUrl}</h4>
                     </h:commandLink>

@@ -18,7 +18,7 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class User {
-    private int id;
+    public int id;
     private String name;
     private String password;
     private String email;
@@ -185,9 +185,9 @@ public class User {
     public String login(){
         DBLayerTahir db = new DBLayerTahir();
         db.connect();
-        boolean result = db.loginUser(this);
+        this.id  = db.loginUser(this);
         
-        if(result){
+        if(this.id!=-1){
             return "main_menu.xhtml";
         }else{
             errorLogin = "Kullanıcı adı veya şifre yanlış";

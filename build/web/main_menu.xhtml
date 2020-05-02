@@ -20,6 +20,10 @@ and open the template in the editor.
         
         <h:form>
             <ol>
+                  <li>
+                    <p>#{user.id}</p>
+                </li>
+                
                 <li>
                    
                     
@@ -41,7 +45,8 @@ and open the template in the editor.
                 </li> 
 
             </ol>
-         
+            <h:commandButton type="submit" value="nutrition" action="nutrition.xhtml"></h:commandButton>
+            <h:commandButton type="submit" value="exercise" action="exercise.xhtml"></h:commandButton>
         </h:form>
     </h:body>
 </html>

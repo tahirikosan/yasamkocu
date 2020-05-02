@@ -20,6 +20,7 @@ and open the template in the editor.
         
         <h:form>
             <ol>
+                 <h:inputText value="#{user.id}" id="x" style="display: none" />
                 <li>
                     Email<h:inputText id="name" value="#{user.email}" required="true" requiredMessage="Lütfen geçerli bir email adresi griniz">
                             <f:validateRegex pattern="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"/>

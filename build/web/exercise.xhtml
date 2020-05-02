@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -20,12 +21,12 @@
                         <h:outputText value="Enter the image url"/>
                         <h:inputText value="#{exercise.imageurl}"/><br></br>
                         
-                        <h:commandButton value="ADD" action="#{exercise.add()}"/>
+                        <h:commandButton value="ADD" action="#{exercise.add(user.id)}"/>
             </h:panelGroup>
              </h:form>
        
             <h:panelGroup>
-            <ui:repeat var="c" value="#{zeyno.getExercises()}">
+             <c:forEach var="c" items="#{zeyno.getExercises(user.id)}">
                
                 <h:graphicImage  value = "#{c.imageurl}"/>
                  <h:outputText value="#{c.name}"/> 
@@ -33,17 +34,17 @@
                  <h:inputHidden value="#{c.id}"></h:inputHidden>
                   <h:outputText value="Enter the minutes"/>
                   <h:inputText value="#{userExercise.exercisetime}" required="true"/>
-                  <h:commandButton value="ADD" action="#{userExercise.userAdd()}"/>
+             <h:commandButton value="ADD" action="#{zeyno.AddUserExercise(c,userExercise,user.id)}"/>
                  </h:form>
-                 <h:form>
-                 <h:commandButton value="SIL" action="#{zeyno.DeleteExercise(c)}"/>
-                 </h:form>
-            </ui:repeat>
+                    <h:form>
+                     <h:commandButton value="SIL" action="#{zeyno.DeleteExercise(c.id,user.id)}"/>
+                 </h:form>  
+             </c:forEach>
               </h:panelGroup>
        
         <h:panelGroup>
                 <h2>What did exercise today?</h2>
-             <h:dataTable value = "#{zeyno.getUserExercises()}" var = "c">
+             <h:dataTable value = "#{zeyno.getUserExercises(user.id)}" var = "c">
                 
                  <h:column>
       <f:facet name = "header"> Exercise Name </f:facet>
@@ -53,28 +54,20 @@
       <f:facet name = "header">Minutes</f:facet>
       #{c.exercisetime}
    </h:column>
-    
-                <h:outputText value="Total:"/>
-                <h:outputText value="#{zeyno.getTotalCalExercise}"/>
-                  
-            
-               
+                  <h:column>
+                 <h:form>
+                     <h:commandButton value="SIL" action="#{zeyno.DeleteUserExercise(c.id)}"/>
+                 </h:form>  
+    </h:column>         
              </h:dataTable> 
-</h:panelGroup>  
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
+                
+        </h:panelGroup>  
+       <h:panelGroup>
+                <h:outputText value="Total:"/>
+                <h:outputText value="#{zeyno.getTotalCalExercise(user.id)}"/>
+                  
+         </h:panelGroup>   
+            
     </h:body>
 </html>
 
