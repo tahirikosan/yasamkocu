@@ -70,17 +70,4 @@ public class UserNutrition {
     public void setNutritiongr(int nutritiongr) {
         this.nutritiongr = nutritiongr;
     }
-    
-  public String userAdd(){
-        
-             DBLayerZeyno db = new DBLayerZeyno();
-              db.connect();
-           boolean result = db.AddUserNutrition(this);
-
-            if(result){
-               return "nutrition.xhtml";
-            }else{
-               return "basarisiz.xhtml";
-            }
-     }
 }
