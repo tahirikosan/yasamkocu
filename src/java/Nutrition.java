@@ -53,11 +53,11 @@ public class Nutrition {
         this.imageurl = imageurl;
     }
     
-    public String add(){
+    public String add(int userid){
         
              DBLayerZeyno db = new DBLayerZeyno();
               db.connect();
-           boolean result = db.AddNutrition(this);
+           boolean result = db.AddNutrition(this,userid);
 
             if(result){
                return "nutrition.xhtml";
