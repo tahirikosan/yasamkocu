@@ -114,7 +114,7 @@ public class DBLayerTahir {
     }
     
     // Login
-    public boolean loginUser(User user){
+    public int loginUser(User user){
         if(conn == null){
             connect();
         }
@@ -127,16 +127,16 @@ public class DBLayerTahir {
             
             while(result.next()){
                 System.out.println("wwrked");
-                return true;
+                return result.getInt(1);
             }
             
-            return false;
+            return -1;
         
         } catch (Exception e) {
             System.out.println("Login hata " + e.toString());
         }
         
-        return false;
+        return -1;
     }
     
     public boolean updateUser(User user){
