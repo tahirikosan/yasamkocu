@@ -52,11 +52,11 @@ public class Exercise {
     public void setImageurl(String imageurl) {
         this.imageurl = imageurl;
     }
-      public String add(){
+      public String add(int userid){
         
              DBLayerZeyno db = new DBLayerZeyno();
               db.connect();
-           boolean result = db.AddExercise(this);
+           boolean result = db.AddExercise(this,userid);
 
             if(result){
                return "exercise.xhtml";
