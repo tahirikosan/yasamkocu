@@ -69,5 +69,20 @@ public class UserExercise {
     public void setName(String Name) {
         this.Name = Name;
     }
+
+   
+
+    public String userAdd(){
+        
+             DBLayerZeyno db = new DBLayerZeyno();
+              db.connect();
+           boolean result = db.AddUserExercise(this);
+
+            if(result){
+               return "exercise.xhtml";
+            }else{
+               return "basarisiz.xhtml";
+            }
+     }
     
 }
