@@ -116,26 +116,27 @@ public class DBLayerZeyno implements Serializable{
       return records;
    }
     
-      public void getTotalCalNutrition() {
+      public int getTotalCalNutrition() {
       ResultSet rs = null;
       PreparedStatement pst = null;
       Connection con = connect();
       String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
       String stm = "SELECT SUM(USER_NUTRITION.NUTRITIONGR*NUTRITION.CAL) FROM LIFECOACH.USER_NUTRITION INNER JOIN NUTRITION ON USER_NUTRITION.NUTRITIONID=NUTRITION.ID WHERE USER_NUTRITION.NDATE='"+ date+"' GROUP BY USER_NUTRITION.NDATE";
-      
+       int cal=0;
       try {
         
          pst = con.prepareStatement(stm);
          pst.execute();
          rs = pst.getResultSet();
          while(rs.next()){
-        System.out.println(rs.getInt(1));
+         cal=rs.getInt(1);
          } 
          
       } catch (SQLException e) {
          e.printStackTrace();
          System.out.println("Error Data : " + e.getMessage());
       }
+       return cal;
    }
    
       
@@ -196,36 +197,29 @@ public class DBLayerZeyno implements Serializable{
     }
        
       
-      public boolean AddUserNutrition(UserNutrition x){
+      public void AddUserNutrition(Nutrition y,UserNutrition x){
         if(conn == null){
             connect();
         }
+         String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         
         try{
            
-            String query = "INSERT INTO USER_NUTRITION(USERID,NDATE, NUTRITIONID, NUTRITIONGR) VALUES (?,?,?,?)";
+           String query = "INSERT INTO USER_NUTRITION(USERID,NDATE,NUTRITIONID, NUTRITIONGR) VALUES (?,?,?,?)";
          
             
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, x.getUserid());
-            statement.setString(2,x.getNdate());
-            statement.setInt(3, x.getNutritionid());
+            statement.setString(2,date);
+            statement.setInt(3, y.getId());
             statement.setInt(4, x.getNutritiongr());
             
             int result = statement.executeUpdate();
-          
-            
-            if(result == 1){
-                return true;
-            }else{
-                return false;
-            }
+      
             
         }catch(SQLException e){
             System.out.println(e.toString());
         }
-        
-        return false;
     }
     public boolean AddExercise(Exercise exercise){
         if(conn == null){
@@ -287,36 +281,25 @@ public class DBLayerZeyno implements Serializable{
    }
       
       
-            public boolean AddUserExercise(UserExercise x){
+       public void AddUserExercise(Exercise exercise ,UserExercise userexercise){
         if(conn == null){
             connect();
         }
-        
+         String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         try{
            
             String query = "INSERT INTO USER_EXERCISE(USERID,EDATE, EXERCISEID, EXERCISETIME) VALUES (?,?,?,?)";
-         
-            
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, x.getUserid());
-            statement.setString(2,x. getEdate());
-            statement.setInt(3, x.getExerciseid());
-            statement.setInt(4, x.getExercisetime());
+            statement.setInt(1, userexercise.getUserid());
+            statement.setString(2,date);
+            statement.setInt(3, exercise.getId());
+           statement.setInt(4, userexercise.getExercisetime());
             
             int result = statement.executeUpdate();
-          
-            
-            if(result == 1){
-                return true;
-            }else{
-                return false;
-            }
             
         }catch(SQLException e){
             System.out.println(e.toString());
         }
-        
-        return false;
     }
             
  public String DeleteExercise(Exercise exercise){
@@ -375,26 +358,26 @@ public class DBLayerZeyno implements Serializable{
       return records;
    }
   
- public void getTotalCalExercise() {
+  public int getTotalCalExercise() {
       ResultSet rs = null;
       PreparedStatement pst = null;
       Connection con = connect();
       String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
       String stm = "SELECT SUM(USER_EXERCISE.EXERCISETIME*EXERCISE.CAL) FROM LIFECOACH.USER_EXERCISE INNER JOIN EXERCISE ON USER_EXERCISE.EXERCISEID=EXERCISE.ID WHERE USER_EXERCISE.EDATE='"+ date+"' GROUP BY USER_EXERCISE.EDATE";
-      
+       int cal=0;
       try {
         
          pst = con.prepareStatement(stm);
          pst.execute();
          rs = pst.getResultSet();
          while(rs.next()){
-        System.out.println(rs.getInt(1));
-         } 
-         
+        cal=rs.getInt(1);
+         }   
       } catch (SQLException e) {
          e.printStackTrace();
          System.out.println("Error Data : " + e.getMessage());
       }
+       return cal;
    }
       
    public static void main(String[] args) {

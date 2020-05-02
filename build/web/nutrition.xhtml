@@ -35,7 +35,7 @@
                  <h:inputHidden value="#{c.id}"></h:inputHidden>
                   <h:outputText value="Enter the Gram"/>
                   <h:inputText value="#{userNutrition.nutritiongr}" required="true"/>
-                  <h:commandButton value="ADD" action="#{userNutrition.userAdd()}"/>
+                  <h:commandButton value="ADD" action="#{zeyno.AddUserNutrition(c,userNutrition)}"/>
                  </h:form>
                  <h:form>
                  <h:commandButton value="SIL" action="#{zeyno.DeleteNutrition(c)}"/>
@@ -55,19 +55,14 @@
     <h:column>
       <f:facet name = "header">Gram</f:facet>
       #{c.nutritiongr}
-   </h:column>
+   </h:column>             
+             </h:dataTable> 
+           </h:panelGroup>  
      
+       <h:panelGroup>
                 <h:outputText value="Total:"/>
                 <h:outputText value="#{zeyno.getTotalCalNutrition()}"/>
-                  
-            
-                
-             </h:dataTable> 
-</h:panelGroup>  
-
-       
-            
-          
+            </h:panelGroup>
     </h:body>
 </html>
 

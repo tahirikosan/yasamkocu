@@ -33,7 +33,7 @@
                  <h:inputHidden value="#{c.id}"></h:inputHidden>
                   <h:outputText value="Enter the minutes"/>
                   <h:inputText value="#{userExercise.exercisetime}" required="true"/>
-                  <h:commandButton value="ADD" action="#{userExercise.userAdd()}"/>
+             <h:commandButton value="ADD" action="#{zeyno.AddUserExercise(c,userExercise)}"/>
                  </h:form>
                  <h:form>
                  <h:commandButton value="SIL" action="#{zeyno.DeleteExercise(c)}"/>
@@ -52,29 +52,15 @@
     <h:column>
       <f:facet name = "header">Minutes</f:facet>
       #{c.exercisetime}
-   </h:column>
-    
+   </h:column> 
+             </h:dataTable> 
+        </h:panelGroup>  
+       <h:panelGroup>
                 <h:outputText value="Total:"/>
                 <h:outputText value="#{zeyno.getTotalCalExercise}"/>
                   
+         </h:panelGroup>   
             
-               
-             </h:dataTable> 
-</h:panelGroup>  
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
     </h:body>
 </html>
 
