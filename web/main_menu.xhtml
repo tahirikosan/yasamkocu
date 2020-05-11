@@ -11,87 +11,129 @@ and open the template in the editor.
        xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     
     <h:head>
-        <title>TODO supply a title</title>
+        <title>Main Menu</title>
+
+                        	<!--Bootsrap 4 CDN-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+    
+        <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"/>
+
+	<!--Custom styles-->
+        <link rel="stylesheet" type="text/css" href="tahir.css"></link>
+        
+        <style>
+            .metin{
+                text-align: center;
+                padding-top: 10px;
+                font-weight: bold;
+            };
+            
+            img{
+                height: 50px;
+                width: 100px;
+            };
+        </style>
+        
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
-    <h:body>
-        <div> Main Menu</div>
+    <h:body class="body_menu">
         
-        <p></p>
-        
-        <h:form>
-            <ol>
-                
-                  <li>
-                    <p>#{user.id}</p>
-                </li>
-                
-                
-                <li>
-                                      
-                    <p>#{user.email}</p>
-                </li>
-                <li>
-                   
+        <div>
+            <div class="menu-bar">
+                <ul>
                     
-                    <p>#{user.password}</p>
-                </li>
-                <li>
-                    <h:commandButton type="submit" value="Profile" action="profile.xhtml"/>
-                </li>     
-                
-                 <li>
-                     <h:commandButton type="submit" value="Settings" action="settings.xhtml">
-                         <f:param name="email" value="#{user.email}"/>
-                     </h:commandButton>
-                </li> 
-                
+                    <li><a href="main_menu.xhtml">Ana Sayfa</a></li>
                     <li>
-                    <h:button value = "Exit"  outcome="login.xhtml"/>
-                </li>
-                
-                <li>
-                    <h:commandButton type="submit" value="Blog Page" action="blog.xhtml"/>
-                </li>
-                
-                 <li>
-                    <h:commandButton type="submit" value="Fit Recipes Page" action="recipe.xhtml"/>
-                </li>
-                
-                 <li>
-                    <h:commandButton type="submit" value="Nutrition Page" action="nutrition.xhtml"/>
-                </li>
-                
-                 <li>
-                    <h:commandButton type="submit" value="Exercise Page" action="exercise.xhtml"/>
-                </li>
-                
-                <li>
-                    <h3>Blogs</h3>
-                    <ui:repeat var="text" value="#{BlogBean.getBlogList()}">
-                         <h:panelGroup layout="block" id="container">
-                             <h:commandLink action="#{BlogBean.getBlog(text.id)}" style="display:block;">
-                                 <h2>#{text.title}</h2>
-                                 <h4>#{text.imageUrl}</h4>
-                             </h:commandLink>
-                         </h:panelGroup>
-                     </ui:repeat>
-                </li>
-                
-                <li>
-                    <h3>Fit recipes</h3>
-                    <ui:repeat var="recipe" value="#{RecipeBean.getRecipeList()}">
-                       <h:panelGroup layout="block" id="container">
-                           <h:commandLink action="#{RecipeBean.getRecipe(recipe.id)}" style="display:block;">
-                               <h2>#{recipe.title}</h2>
-                               <h4>#{recipe.imageUrl}</h4>
-                           </h:commandLink>
-                       </h:panelGroup>
-                   </ui:repeat>
-                </li>
+                        <a href="#">Beslenme</a>
+                        <div class="sub-menu-1">
+                            <ul>
+                                <li><a href="nutrition.xhtml">Alınan Kalori</a></li>
+                                <li><a href="recipe.xhtml">Fit Tarifler</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="exercise.xhtml">Spor</a>
+                    </li>
+                    <li>
+                        <a href="psychology.xhtml">Psikoloji</a>
+                          <div class="sub-menu-1">
+                            <ul>
+                                <li><a href="meditation.xhtml" type="submit">Meditasyon</a></li>
+                                <li><a href="kisilikTesti.xhtml" type="submit">Kişilik Testi</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="blog.xhtml">Blog</a></li>
+                    <li>
+                        <a href="#"><i class="fa fa-user"></i></a>
+                        <div class="sub-menu-1">
+                            <ul>
+                                <li><a href="profile.xhtml" type="submit">Profil</a></li>
+                                <li><a href="settings.xhtml" type="submit">Ayarlar</a></li>
+                                <li><a href="login.xhtml">Çıkış</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
 
-            </ol>
+            <div style="width: 50%; display: table; margin: auto;margin-top: 50px; margin-bottom: 50px; ">
+                <div style="display: table-row;">
+                    <div style="width: 200px; display: table-cell;"> 
+                        <div class="container">
+                            <div class="card_menu"> 
+                                <div class="card_menu_item">
+                                    <p class="metin">Bugun ne yedin #{user.name} ?</p>
+                                    <h:button style="margin-left: 100px;" class="btn btn-primary" value="Kalori Hesapla"  outcome="nutrition.xhtml"/>
+                                </div>
+                                
+                                <p class="metin">Bloglar</p>
+                                <div class="card_menu_item_long">
+                                    <h:form style="margin-left: 45px;">
+                                       <ui:repeat var="text" value="#{BlogBean.getBlogList()}">
+                                           <h:panelGroup layout="block" id="container">
+                                               <h:commandLink  action="#{BlogBean.getBlog(text.id)}" style="display:block; color: purple; font-weight: bold">
+                                                   <p style="margin-left: 10px">#{text.title}</p>
+                                                   <img src="#{text.imageUrl}" style="height: 200px; border-radius: 12px; margin-bottom: 30px;"/>
+                                               </h:commandLink>
+                                           </h:panelGroup>
+                                       </ui:repeat>
+                                   </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: table-cell;"> 
+                       <div class="container">
+                            <div class="card_menu"> 
+                                 <div class="card_menu_item">
+                                     <p class="metin">Bugun spor yaptın mı #{user.name}?</p>
+                                     <h:button  style="margin-left: 100px;" class="btn btn-primary" value="Kalori Hesapla"  outcome="exercise.xhtml"/>
+                                </div>
+                                
+                                 <p class="metin">Fit Tarifler</p>
+                                 <div class="card_menu_item_long">
+                                    <h:form style="margin-left: 45px;">
+                                       <ui:repeat var="recipe" value="#{RecipeBean.getRecipeList()}">
+                                           <h:panelGroup layout="block" id="container">
+                                                <h:commandLink  action="#{RecipeBean.getRecipe(recipe.id)}" style="display:block; color: purple; font-weight: bold">
+                                                   <p style="margin-left: 10px">#{recipe.title}</p>
+                                                   <img src="#{recipe.imageUrl}" style="height: 200px; border-radius: 12px; margin-bottom: 30px;"/>
+                                                </h:commandLink>
+                                           </h:panelGroup>
+                                       </ui:repeat>
+                                   </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
          
-        </h:form>
-    </h:body>
+        </div>
+
+    </h:body> 
+       
 </html>

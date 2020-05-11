@@ -18,10 +18,10 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class User {
-    private int id;
-    private String name;
+    private int id = -1;
+    private String name ;
     private String password;
-    private String email;
+    private String email ;
     private String surname;
     private int age;
     private String gender;
@@ -31,6 +31,15 @@ public class User {
     private String password_c;
     private String errorRegister; 
     private String errorLogin;
+    private String errorSettings;
+
+    public String getErrorSettings() {
+        return errorSettings;
+    }
+
+    public void setErrorSettings(String errorSettings) {
+        this.errorSettings = errorSettings;
+    }
 
     public String getErrorRegister() {
         return errorRegister;
@@ -155,7 +164,7 @@ public class User {
     
     public String register(){
         
-        if(validate()){
+        if(validate().equals("Okey")){
              DBLayerTahir db = new DBLayerTahir();
               db.connect();
             boolean result = db.registerUser(this);
@@ -167,19 +176,21 @@ public class User {
                return "register.xhtml";
             }
         }else{
-            errorRegister = "Şifreler aynı olmalı";
+            errorRegister = validate();
             return "register.xhtml";
         }
        
     }
     
-    private boolean validate(){
+    private String validate(){
         
-        if(password.equals(password_c)){
-            return true;
+       if(name == null || surname== null || email== null || age == 0 || height == 0 || weight == 0 || gender == null){
+            return "Lütfen boş kısım bırakmayın.";
+        }else if(!password.equals(password_c)){
+            return "Şifreler aynı olmalı";
         }
         
-        return false;
+        return "Okey";
     }
     
     public String login(){
@@ -198,7 +209,7 @@ public class User {
     
     public String update(){
        
-        if(validate()){
+        if(validate().equals("Okey")){
            DBLayerTahir db = new DBLayerTahir();
            db.connect();
            boolean result = db.updateUser(this);
@@ -206,10 +217,12 @@ public class User {
            if(result){
                return "profile.xhtml";
            }else{
-               return "login.xhtml";
+               errorSettings = "Kaydetme işlemi yapılamadı tekrar deneyiniz.";
+               return "settings.xhtml";
            }
         }else{
-            return "main_menu.xhtml";
+            errorSettings = validate();
+            return "settings.xhtml";
         }
        
     }

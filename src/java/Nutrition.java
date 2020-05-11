@@ -1,25 +1,28 @@
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
- * @author Zeyno
+ * @author Zeynep
  */
-@ManagedBean
-@RequestScoped
-
+@ManagedBean(name = "NutritionBean")
+@SessionScoped
 public class Nutrition {
+
     public int id;
     public String name;
     public int cal;
     public String imageurl;
+    private List<Nutrition> nutritions;
 
     public int getId() {
         return id;
@@ -52,21 +55,30 @@ public class Nutrition {
     public void setImageurl(String imageurl) {
         this.imageurl = imageurl;
     }
-    
-    public String add(int userid){
-        
-             DBLayerZeyno db = new DBLayerZeyno();
-              db.connect();
-           boolean result = db.AddNutrition(this,userid);
 
-            if(result){
-               return "nutrition.xhtml";
-            }else{
-               return "basarisiz.xhtml";
-            }
+    public String add(int userid) { //Adding new nutrition
+        DBLayerZeyno db = new DBLayerZeyno();
+        db.connect();
+        boolean result = db.AddNutrition(this, userid);
+        if (result) {
+            return "nutrition.xhtml";
+        } else {
+            return "basarisiz.xhtml";
+        }
     }
-}
-    
-    
-    
 
+    public List<Nutrition> getNutritions(int userid) { //Displaying all nutritions
+
+        DBLayerZeyno db = new DBLayerZeyno();
+        nutritions = new ArrayList();
+        nutritions = db.getNutritions(userid);
+        return nutritions;
+    }
+
+    public void DeleteNutritions(int nutritionid, int userid) { //Deleting nutrition
+        DBLayerZeyno db = new DBLayerZeyno();
+        db.connect();
+        db.DeleteNutrition(nutritionid, userid);
+    }
+
+}

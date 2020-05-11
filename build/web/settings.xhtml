@@ -7,68 +7,103 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
-    <head>
-        <title>TODO supply a title</title>
+      xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    
+    <h:head>
+        <title>Settings</title>
+        
+        <title>Register Page</title>
+                 	<!--Bootsrap 4 CDN-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+    
+        <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"/>
+
+	<!--Custom styles-->
+        <link rel="stylesheet" type="text/css" href="tahir.css"></link>
+        
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>Settings</div>
+    </h:head>
+    <h:body class="body_settings">
         
-         <h:form>
-            <ol>
+                <div class="container_settings">
+                <div class="d-flex justify-content-center h-100">
+                        <div class="card">
+                                <div class="card-header">
+                                        <h3>Ayarlar</h3>
+                                </div>
+                                <div class="card-body">
+                                        <h:form>
+                                            
+                                             <h:inputText value="#{user.id}" id="x" style="display: none" />
+                                             
+                                                <div class="input-group form-group">
                 
-                <p>#{user.errorRegister}</p>
-  
-                <li>
-                    Name<h:inputText id="name" required="true"  value="#{user.name}" requiredMessage="Please enter a valid name"/> 
-                </li>
+                                                   <h:inputText id="name" class="form-control"    value="#{user.name}"  pt:placeholder="Ad"/> 
+                                                </div>
+                                             
+                                                 <div class="input-group form-group">
                 
-                <li>
-                    Surname<h:inputText id="surname"  required="true" value="#{user.surname}" requiredMessage="Please enter a valid surname"/> 
-                </li>
-                
-       
-                
-                <li>
-                    password<h:inputText id="password" required="true" value="#{user.password}" requiredMessage="Please enter a valid password">
-                                    <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})"/>
-                            </h:inputText>   
-                </li>
-                
-                 <li>
-                     password_confirm<h:inputText id="password_c" required="true"  value="#{user.password_c}"  requiredMessage="Please enter a valid password" >
-                                            <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})"/>
-                                    </h:inputText>   
-                </li>
-                
-                 <li>
-                    Age<h:inputText id="age"  required="true" value="#{user.age}" requiredMessage="Please enter a valid age"/> 
-                </li>
-                
-                 <li>
-                    Height<h:inputText id="height"  required="true" value="#{user.height}" requiredMessage="Please enter a valid height"/> 
-                </li>
-                
-                 <li>
-                    weight<h:inputText id="weight"  required="true" value="#{user.weight}" requiredMessage="Please enter a valid weight"/> 
-                </li>
-                
-                
-                <li>
-                    <h:selectOneRadio value="#{user.gender}" required="true"  requiredMessage="Please choose gender">
-                           <f:selectItem itemValue="male" itemLabel="Male" />
-                           <f:selectItem itemValue="female" itemLabel="Female" />
-                   </h:selectOneRadio>
-                </li>
-                
-                <li>
-                    <h:commandButton type="submit" value="Kaydet" action="#{user.update()}"/>
-                </li>               
-                
-            </ol>
-         
-        </h:form>
+                                                   <h:inputText id="surname" class="form-control"    value="#{user.surname}"  pt:placeholder="Soyad"/> 
+                                                </div>
+                                             
+                                                <div class="input-group form-group">
+                                                       
+                                                    <h:inputText id="email"  class="form-control" value="#{user.email}"   pt:placeholder="Email" >
+                                                          <!--  <f:validateRegex pattern="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"/> -->
+                                                    </h:inputText>
+                                                </div>
+                                             
+                                                <div class="input-group form-group">
+                                                     
+                                                        <h:inputText id="password" class="form-control" value="#{user.password}"   pt:placeholder="Şifre">
+                                                          <!--   <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})"/> -->
+                                                        </h:inputText>  
+                                                </div>
+                                             
+                                                <div class="input-group form-group">
+                                                  
+                                                        <h:inputText id="password_c" class="form-control" value="#{user.password_c}"  pt:placeholder="Şifre tekrar">
+                                                          <!--   <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})"/> -->
+                                                        </h:inputText>  
+                                                </div>
+                                             
+                                                <div class="input-group form-group">
+                                                    <span class="input-group-text"><i>Age</i></span>
+                                                    <h:inputText id="age"  class="form-control"  value="#{user.age}"  pt:placeholder="Yaş"/> 
+                                                </div>
+                                             
+                                                <div class="input-group form-group">
+                                                   <span class="input-group-text"><i>Height</i></span>
+                                                   <h:inputText id="height" class="form-control"   value="#{user.height}"  pt:placeholder="Boy"/> 
+                                                </div>
+                                            
+                                                <div class="input-group form-group">
+                                                   <span class="input-group-text"><i>Weight</i></span>    
+                                                  <h:inputText id="weight" class="form-control"   value="#{user.weight}"  pt:placeholder="Kilo"/> 
+                                                </div>
+                                        
+                                                <div class="form-group">
+                                                    <h:commandButton type="submit"  class="btn float-right login_btn" value="Kaydet" action="#{user.update()}"/>
+                                                </div>
+                                             
+                                               <h:selectOneRadio value="#{user.gender}" class="form-control" >
+                                                    <f:selectItem class="form-control" itemValue="male" itemLabel="Male" />
+                                                    <f:selectItem class="form-control" itemValue="female" itemLabel="Female" />
+                                               </h:selectOneRadio>
+                                             
+                                               <div class="input-group-prepend">
+                                                   <p style="color: red; font-weight: bold">#{user.errorSettings}</p>
+                                               </div>
+                                        </h:form>
+                                </div>
+                               
+                        </div>
+                </div>
+        </div> 
         
-    </body>
+        
+        
+    </h:body>
 </html>

@@ -7,68 +7,68 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Facelet Title</title>
-     
+
     </h:head>
     <h:body>
-       <h1>Count Your Calories</h1>
-    	<h:form>
+        <h1>Count Your Calories</h1>
+        <h:form>
             <h:panelGroup>
-              <h:outputText value="Enter the Nutrition"/>
-              <h:inputText value="#{nutrition.name}" required="true"/><br></br>
-                        
-                        <h:outputText value="Enter the calories per gram"/>
-                        <h:inputText value="#{nutrition.cal}"/><br></br>
-                        
-                        <h:outputText value="Enter the image url"/>
-                        <h:inputText value="#{nutrition.imageurl}"/><br></br>
-                        
-                        <h:commandButton value="ADD" action="#{nutrition.add(user.id)}"/>
+                <h:outputText value="Enter the Nutrition"/>
+                <h:inputText value="#{NutritionBean.name}" required="true"/><br></br>
+
+                <h:outputText value="Enter the calories per gram"/>
+                <h:inputText value="#{NutritionBean.cal}"/><br></br>
+
+                <h:outputText value="Enter the image url"/>
+                <h:inputText value="#{NutritionBean.imageurl}"/><br></br>
+
+                <h:commandButton value="ADD" action="#{NutritionBean.add(user.id)}"/>
             </h:panelGroup>
-             </h:form> 
- 
-     
-              <h:panelGroup>
-            <c:forEach var="c" items="#{zeyno.getNutritions(user.id)}">
-               
-                <h:graphicImage  value = "#{c.imageurl}"/>
-                 <h:outputText value="#{c.name}"/> 
-                 <h:form>
-                 <h:inputHidden value="#{c.id}"></h:inputHidden>
-                  <h:outputText value="Enter the Gram"/>
-                  <h:inputText value="#{userNutrition.nutritiongr}" required="true"/>
-                  <h:commandButton value="ADD" action="#{zeyno.AddUserNutrition(c.id,userNutrition.nutritiongr,user.id)}"/>
-                 </h:form>
-                  <h:form>
-                     <h:commandButton value="SIL" action="#{zeyno.DeleteNutrition(c.id,user.id)}"/>
-                 </h:form>  
-             
-                 </c:forEach>
-              </h:panelGroup>
-       
-    
-            <h:panelGroup>
-                <h2>What did you eat today?</h2>
-             <h:dataTable value = "#{zeyno.getUserNutritions(user.id)}" var = "c">
-                
-                 <h:column>
-      <f:facet name = "header">Nutrition Name </f:facet>
-      #{c.name}
-   </h:column>
-    <h:column>
-      <f:facet name = "header">Gram</f:facet>
-      #{c.nutritiongr}
-    </h:column>  <h:column>
-                 <h:form>
-                     <h:commandButton value="SIL" action="#{zeyno.DeleteUserNutrition(c.id)}"/>
-                 </h:form>  
-    </h:column>         
-             </h:dataTable> 
-           </h:panelGroup>  
-     
-       <h:panelGroup>
-                <h:outputText value="Total:"/>
-                <h:outputText value="#{zeyno.getTotalCalNutrition(user.id)}"/>
-            </h:panelGroup>
+        </h:form> 
+
+
+        <h:panelGroup>
+            <c:forEach var="nutrition" items="#{NutritionBean.getNutritions(user.id)}">
+
+                <h:graphicImage  value = "#{nutrition.imageurl}"/>
+                <h:outputText value="#{nutrition.name}"/> 
+                <h:form>
+                    <h:inputHidden value="#{nutrition.id}"></h:inputHidden>
+                    <h:outputText value="Enter the Gram"/>
+                    <h:inputText value="#{UserNutritionBean.nutritiongr}" required="true"/>
+                    <h:commandButton value="ADD" action="#{UserNutritionBean.addUserNutrition(nutrition.id,UserNutritionBean.nutritiongr,user.id)}"/>
+                </h:form>
+                <h:form>
+                    <h:commandButton value="SIL" action="#{NutritionBean.DeleteNutritions(nutrition.id,user.id)}"/>
+                </h:form>  
+
+            </c:forEach>
+        </h:panelGroup>
+
+
+        <h:panelGroup>
+            <h2>What did you eat today?</h2>
+            <h:dataTable value = "#{UserNutritionBean.getUserNutritions(user.id)}" var = "usernutrition">
+
+                <h:column>
+                    <f:facet name = "header">Nutrition Name </f:facet>
+                        #{usernutrition.name}
+                </h:column>
+                <h:column>
+                    <f:facet name = "header">Gram</f:facet>
+                        #{usernutrition.nutritiongr}
+                </h:column>  <h:column>
+                    <h:form>
+                        <h:commandButton value="SIL" action="#{UserNutritionBean.DeleteUserNutrition(usernutrition.id)}"/>
+                    </h:form>  
+                </h:column>         
+            </h:dataTable> 
+        </h:panelGroup>  
+
+        <h:panelGroup>
+            <h:outputText value="Total:"/>
+            <h:outputText value="#{UserNutritionBean.TotalCalNutrition(user.id)}"/>
+        </h:panelGroup>
     </h:body>
 </html>
 

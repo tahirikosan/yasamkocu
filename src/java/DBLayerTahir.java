@@ -83,6 +83,18 @@ public class DBLayerTahir {
         }
         
         try{
+            
+            String lookUser = "SELECT * FROM kullanici WHERE email = '" +user.getEmail()+"'";
+            Statement statement0 = conn.createStatement();
+            ResultSet rs = statement0.executeQuery(lookUser);
+            int id = 0;
+            while(rs.next()){
+                id = rs.getInt(1);
+            }
+            
+            if(id != 0){
+                return false;
+            }
            
             String query = "INSERT INTO kullanici (name, surname, password, email, gender, height, weight, age) VALUES (?,?,?,?,?,?,?,?)";
             
@@ -126,7 +138,7 @@ public class DBLayerTahir {
             ResultSet result = statement.executeQuery(query);
             
             while(result.next()){
-                System.out.println("wwrked");
+                
                 return result.getInt(1);
             }
             
@@ -146,13 +158,13 @@ public class DBLayerTahir {
         }
         
         try {
-            String query = "SELECT * FROM kullanici WHERE email = '" +user.getEmail()+"'";
+            String query = "SELECT * FROM kullanici WHERE id = " +user.getId()+"";
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(query);
        
             while(result.next()){
                 System.out.println(result.getString(2));
-                query = "UPDATE kullanici SET name='"+user.getName()+"', surname='"+user.getSurname()+"', password='"+user.getPassword()+"', gender='"+user.getGender()+"',  height="+user.getHeight()+", weight="+user.getWeight()+", age="+user.getAge()+" WHERE id = " +result.getInt(1)+ "";
+                query = "UPDATE kullanici SET name='"+user.getName()+"', surname='"+user.getSurname()+"', password='"+user.getPassword()+"', email = '"+user.getEmail()+"', gender='"+user.getGender()+"',  height="+user.getHeight()+", weight="+user.getWeight()+", age="+user.getAge()+" WHERE id = " +result.getInt(1)+ "";
                 int rs = statement.executeUpdate(query);
                 
                 if(rs == 1){
