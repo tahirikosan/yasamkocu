@@ -1,6 +1,8 @@
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
@@ -32,6 +34,8 @@ public class User {
     private String errorRegister; 
     private String errorLogin;
     private String errorSettings;
+    
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
     public String getErrorSettings() {
         return errorSettings;
@@ -53,7 +57,7 @@ public class User {
     public User(){
     }
 
-    public User(int id, String name, String email, String password, String surname, int age, String gender, int height, int weight) {
+    public User(int id, String name, String email, String password, String surname, String gender, int height, int weight, int age) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -183,11 +187,23 @@ public class User {
     }
     
     private String validate(){
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
+        this.name = this.name.trim();
+        this.surname = this.surname.trim();
+        this.password = this.password.trim();
+        this.password_c = this.password_c.trim();
+        this.email = this.email.trim();
         
        if(name == null || surname== null || email== null || age == 0 || height == 0 || weight == 0 || gender == null){
             return "Lütfen boş kısım bırakmayın.";
+        }else if(name.isEmpty() || surname.isEmpty() || email.isEmpty() || age == 0 || height == 0 || weight == 0 || gender == null){
+            return "Lütfen boş kısım bırakmayın.";
         }else if(!password.equals(password_c)){
             return "Şifreler aynı olmalı";
+        }else if(password.length() < 6){
+           return "Şifre uzunluğu min. 6 karakter olmalı";
+        }else if(!matcher.find()){
+            return "Lütfen geçerli bir email adresi giriniz.";
         }
         
         return "Okey";
@@ -196,9 +212,22 @@ public class User {
     public String login(){
         DBLayerTahir db = new DBLayerTahir();
         db.connect();
-        this.id = db.loginUser(this);
+        User newData = db.loginUser(this);
+        this.id = newData.id;
         
         if(this.id != -1){
+            
+            this.name = newData.name;
+            this.surname = newData.surname;
+            this.email = newData.email;
+            this.password = newData.password;
+            this.password_c = newData.password;
+            this.age = newData.age;
+            this.gender = newData.gender;
+            this.height = newData.height;
+            this.weight = newData.weight;
+     
+            
             return "main_menu.xhtml";
         }else{
             errorLogin = "Kullanıcı adı veya şifre yanlış";

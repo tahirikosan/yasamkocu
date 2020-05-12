@@ -21,8 +21,16 @@ and open the template in the editor.
                 }
               }
         </style>
+        
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     
+  
     </h:head>
     <h:body>
+
         <div class="container">
             <div class="row"  style="margin-top: 10%;">
             <div class="col-md-12">
@@ -31,9 +39,7 @@ and open the template in the editor.
                     <h1 class="display-3">#{BlogBean.title}</h1>
                     <br/>
                     <p class="p">#{BlogBean.content}</p>
-                    <p class="p">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et tortor et dolor aliquet mattis in eget magna. Sed massa dolor, fermentum et libero eu, molestie viverra enim. Nullam malesuada mi erat, quis dictum lacus finibus vel. Duis suscipit, velit at porta placerat, ex justo sagittis lacus, a bibendum turpis libero id risus. Sed pretium nulla est, pulvinar maximus nulla pretium id. Maecenas nulla odio, finibus id porttitor id, vestibulum in odio. Curabitur aliquet ipsum vitae neque aliquam, eget euismod magna elementum. Morbi ex nibh, bibendum et feugiat quis, tincidunt a diam. Proin suscipit ipsum vel orci iaculis, vitae ultrices nisl bibendum. Donec luctus nibh sit amet mauris mollis aliquet. Fusce sed laoreet massa, vel tincidunt enim. Duis aliquam nunc imperdiet fringilla rutrum. Proin aliquet, ligula quis volutpat semper, elit nunc porttitor enim, vitae posuere dolor augue tristique erat. Nulla sed blandit libero. Quisque vel diam venenatis diam pretium tincidunt quis eget erat.</p>
-                    <p>Sed imperdiet, tortor in pretium consectetur, quam magna cursus nisl, a hendrerit felis erat sed ipsum. Nunc magna purus, egestas vehicula iaculis sit amet, consequat a libero. Cras ac ullamcorper lorem, eu malesuada tortor. Etiam id sagittis est. In porta auctor nisl in iaculis. Curabitur id massa vitae tellus lacinia maximus. Aliquam non aliquam leo, in convallis diam.</p>
+                    
                 </h:form>
             </div>
             </div>

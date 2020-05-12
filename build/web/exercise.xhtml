@@ -6,67 +6,157 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>LifeCoach</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"></link>
+    
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     
+  
+    
     </h:head>
-    <h:body>
-        <h1>Count Your Calories</h1>
-        <h:form>
-            <h:panelGroup>
-                <h:outputText value="Enter the Exercise"/>
-                <h:inputText value="#{ExerciseBean.name}" required="true"/><br></br>
+    <h:body> 
+        
+        
+                <div class="container" style="padding-top:5px;margin-bottom: 20px; margin-left: 250px;">
+            <div class="row">
+                <div class="col-xs-12" style="margin-right: 30px;">
+                         <div class="dropdown">
+                             <h:button class="btn btn-success"  value=" Ana Sayfa" style="width: 120px;"  id="dropdownMenuButton" outcome="main_menu.xhtml"/>
+                        </div>
+                </div>
+                <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px;">
+                            <button class="btn btn-success dropdown-toggle" style="width: 120px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Beslenme
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="nutrition.xhtml">Alınan Kalori</a>
+                              <a class="dropdown-item" href="recipe.xhtml">Fit Tarifler</a>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px;">
+                                <h:button class="btn btn-success"  value="Spor" style="width: 120px;"  id="dropdownMenuButton_2" outcome="exercise.xhtml"/>
+                        </div>
+                </div>
+                 <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px">
+                                <h:button class="btn btn-success"  value="Blog" style="width: 120px;"  id="dropdownMenuButton_3" outcome="blog.xhtml"/>
+                        </div>
+                </div>
+                <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px">
+                            <button class="btn btn-success dropdown-toggle" style="width: 120px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Psikoloji
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="meditation.xhtml">Meditasyon</a>
+                              <a class="dropdown-item" href="kisilikTesti.xhtml">Kişilik Testi</a>
+                           
+                            </div>
+                        </div>
+                </div>
+                 <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px">
+                            <button class="btn btn-success dropdown-toggle" style="width: 120px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               Profil
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="profil.xhtml">Profil</a>
+                              <a class="dropdown-item" href="settings.xhtml">Ayarlar</a>
+                              <a class="dropdown-item" href="login.xhtml">Çıkış</a>
+                            </div>
+                        </div>
+                </div>
+            </div>   
+        </div>
 
-                <h:outputText value="Enter the calories per minute"/>
-                <h:inputText value="#{ExerciseBean.cal}"/><br></br>
-
-                <h:outputText value="Enter the image url"/>
-                <h:inputText value="#{ExerciseBean.imageurl}"/><br></br>
-
-                <h:commandButton value="ADD" action="#{ExerciseBean.add(user.id)}"/>
-            </h:panelGroup>
-        </h:form>
-
-        <h:panelGroup>
-            <c:forEach var="exercise" items="#{ExerciseBean.getExercises(user.id)}">
-
-                <h:graphicImage  value = "#{exercise.imageurl}"/>
-                <h:outputText value="#{exercise.name}"/> 
+        
+        <div class="row">
+            <div class="ml-3 col-12 mb-4">
+                <h1>Count today's given calories</h1>
+                <hr></hr>
                 <h:form>
-                    <h:inputHidden value="#{exercise.id}"></h:inputHidden>
-                    <h:outputText value="Enter the minutes"/>
-                    <h:inputText value="#{UserExerciseBean.exercisetime}" required="true"/>
-                    <h:commandButton value="ADD" action="#{UserExerciseBean.addUserExercise(exercise.id,UserExerciseBean.exercisetime,user.id)}"/>
+                    <h:panelGroup class="form-row-9">
+                        <h:panelGroup class="form-group">
+                            <h:outputText value="Enter the Exercise"/>
+                            <h:inputText  class="form-control col-sm-6 mb-2" value="#{ExerciseBean.name}" required="true"/><br></br>
+                        </h:panelGroup>    
+                        <h:panelGroup class="form-group">
+                            <h:outputText value="Enter the calories per minute"/>
+                            <h:inputText class="form-control col-sm-6 mb-2" value="#{ExerciseBean.cal}"/><br></br>
+                        </h:panelGroup>    
+                        <h:panelGroup class="form-group">
+                            <h:outputText value="Enter the image url"/>
+                            <h:inputText class="form-control col-sm-6 mb-2" value="#{ExerciseBean.imageurl}"/><br></br>
+                        </h:panelGroup>
+
+                        <h:commandButton  class="btn btn-success " style=" background-color:#04B404" value="Add New Exercise" action="#{ExerciseBean.add(user.id)}"/>
+                    </h:panelGroup>
                 </h:form>
-                <h:form>
-                    <h:commandButton value="SIL" action="#{ExerciseBean.DeleteExercises(exercise.id,user.id)}"/>
-                </h:form>  
-            </c:forEach>
-        </h:panelGroup>
+            </div>
+            <div class="col-3"></div>   
+        </div>
 
-        <h:panelGroup>
-            <h2>What did exercise today?</h2>
-            <h:dataTable value = "#{UserExerciseBean.getUserExercises(user.id)}" var = "userexercise">
+        <div class="row">
+            <div class="col-8">
+                <div class="row">
+                    <c:forEach var="exercise" items="#{ExerciseBean.getExercises(user.id)}">
+                        <div class="card ml-3 mt-3"  style="width: 300px;">
+                            <h:form>
+                                <div class="row">
+                                    <div class="col-10"></div>
+                                    <div class="col-2">
+                                        <h:commandButton class="btn btn-success btn-sm" style="background-color:#04B404;" value="X" action="#{ExerciseBean.DeleteExercises(exercise.id,user.id)}"/>
+                                    </div>
+                                </div>
+                            </h:form>  
+                            <h:graphicImage  value = "#{exercise.imageurl}"/>
+                            <div class="card-body text-center">
+                                <h5 class="card-title"> <h:outputText value="#{exercise.name}"/></h5>
+                                <h:form>
+                                    <h:inputHidden value="#{exercise.id}"></h:inputHidden>
+                                    <h:outputText value="Enter the minutes"/>
+                                    <h:inputText value="#{UserExerciseBean.exercisetime}" required="true"/>
+                                    <h:commandButton value="I did this today" class="btn btn-success btn btn-primary stretched-link mt-1" style=" background-color:#04B404" action="#{UserExerciseBean.addUserExercise(exercise.id,UserExerciseBean.exercisetime,user.id)}"/>
+                                </h:form>
+                            </div> 
+                        </div>
+                    </c:forEach>  
+                </div>
+            </div>
 
-                <h:column>
-                    <f:facet name = "header"> Exercise Name </f:facet>
-                        #{userexercise.name}
-                </h:column>
-                <h:column>
-                    <f:facet name = "header">Minutes</f:facet>
-                        #{userexercise.exercisetime}
-                </h:column>
-                <h:column>
-                    <h:form>
-                        <h:commandButton value="SIL" action="#{UserExerciseBean.DeleteUserExercise(userexercise.id)}"/>
-                    </h:form>  
-                </h:column>         
-            </h:dataTable> 
+            <div class="col-4">
+                <h:panelGroup>
+                    <h2>What did exercise today?</h2>
+                    <h:dataTable  class="table mt-4" value = "#{UserExerciseBean.getUserExercises(user.id)}" var = "userexercise">
 
-        </h:panelGroup>  
-        <h:panelGroup>
-            <h:outputText value="Total:"/>
-            <h:outputText value="#{UserExerciseBean.getTotalCalExercise(user.id)}"/>
+                        <h:column>
+                            <f:facet name = "header"> Exercise Name </f:facet>
+                                #{userexercise.name}
+                        </h:column>
+                        <h:column>
+                            <f:facet name = "header">Minutes</f:facet>
+                                #{userexercise.exercisetime}
+                        </h:column>
+                        <h:column>
+                            <h:form>
+                                <h:commandButton value="Delete" class="btn btn-success btn-sm" action="#{UserExerciseBean.DeleteUserExercise(userexercise.id)}"/>
+                            </h:form>  
+                        </h:column>         
+                    </h:dataTable> 
+                </h:panelGroup>  
 
-        </h:panelGroup>   
+                <div class="alert alert-success" role="alert">
+                    <h5 style="text-align: center;">Total:#{UserExerciseBean.getTotalCalExercise(user.id)}
+                    </h5>
+                </div>
+            </div>
+        </div>
 
     </h:body>
 </html>

@@ -11,20 +11,52 @@ and open the template in the editor.
     
     <h:head>
         <title>Recipe Display</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            @media (min-width: 1200px) {
+                .container {
+                  width: 800px;
+                  height: 200px;
+                }
+              }
+        </style>
+        
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     
+  
     </h:head>
     <h:body>
-        <h:form>
-            <h1>#{RecipeBean.title}</h1>
-            <h3>#{RecipeBean.label}</h3>
-            <h4>Kaç kişilik?</h4>
-            <h5>#{RecipeBean.servings}</h5>
-            <h4>Süre</h4>
-            <h5>#{RecipeBean.prepTime}</h5>
-            <p>#{RecipeBean.content}</p>
-        </h:form>
-        <h:form>
-            <h:commandButton value="Bugün bu tarifi yaptım." type="submit" action="#{UserRecipeBean.recipeMade(User.id, RecipeBean.id)}" />
-        </h:form>
+        
+ 
+        
+        <div class="container">
+            <div class="row" style="margin-top: 10%;" align="center">
+                <div class="col-md-12">
+                    <h:form>
+                        <img src="#{RecipeBean.imageUrl}" class="img-fluid" alt="Responsive image"></img>
+                        <h1 class="display-2">#{RecipeBean.title}</h1>
+                        <div class="row border rounded border-secondary" style="margin:3%;padding:1%">
+                            <div class="col-4" style="padding-top:1.5%;">
+                                <h5>Kaç kişilik?</h5>
+                                <h5>#{RecipeBean.servings}</h5>
+                            </div>
+                            <div class="col-4" style="padding-top:1.5%;">
+                                <h5>Süre</h5>
+                                <h5>#{RecipeBean.prepTime} dk</h5>
+                            </div>
+                            <div class="col-4" style="margin:auto;padding-top:1.5%;"  align="center">
+                                <h4> <span class="badge badge-warning">#{RecipeBean.label}</span></h4>
+                            </div>
+                        </div>
+                        <p>#{RecipeBean.content}</p>
+                        <h:commandButton class="btn btn-success" value="Bugün bu tarifi yaptım." type="submit" action="#{UserRecipeBean.recipeMade(user.id, RecipeBean.id)}" />
+                    </h:form>
+                </div>
+            </div>
+        </div>     
     </h:body>
 </html>

@@ -47,13 +47,20 @@ and open the template in the editor.
                                 <div class="card-body">
                                         <h:form>
                                             
-                                             <h:inputText value="#{user.id}" id="x" style="display: none" />
+                                            <!--İnvisible values-->
+                                            <h:inputText value="#{user.id}" id="id" style="display: none" />
+                                            <h:inputText value="#{user.name}" id="name" style="display: none" />
+                                            <h:inputText value="#{user.surname}" id="surname" style="display: none" />
+                                            <h:inputText value="#{user.height}" id="height" style="display: none" />
+                                            <h:inputText value="#{user.weight}" id="weight" style="display: none" />
+                                            <h:inputText value="#{user.age}" id="age" style="display: none" />
+                                            <h:inputText value="#{user.gender}" id="gender" style="display: none" />
                                             
                                                 <div class="input-group form-group">
                                                         <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                                                         </div>
-                                                    <h:inputText id="name"  class="form-control" value="#{user.email}" required="true" requiredMessage="Lütfen geçerli bir email adresi griniz" pt:placeholder="Email" >
+                                                    <h:inputText id="email"  class="form-control" value="#{user.email}" required="true" requiredMessage="Lütfen geçerli bir email adresi griniz" pt:placeholder="Email" >
                                                            <!-- <f:validateRegex pattern="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"/> -->
                                                     </h:inputText>
                                             
@@ -62,9 +69,9 @@ and open the template in the editor.
                                                         <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                                                         </div>
-                                                        <h:inputText id="password" class="form-control" value="#{user.password}" required="true" requiredMessage="Lütfen geçerli bir şifre giriniz" pt:placeholder="Şifre">
+                                                        <h:inputSecret id="password" class="form-control" value="#{user.password}" required="true" requiredMessage="Lütfen geçerli bir şifre giriniz" pt:placeholder="Şifre">
                                                            <!-- <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})"/ --> 
-                                                        </h:inputText>  
+                                                        </h:inputSecret>  
                                                 </div>
                                              
                                                 <div class="input-group form-group">
@@ -73,6 +80,7 @@ and open the template in the editor.
                                                         </div>
                                                 </div>
                                                 <div class="form-group">
+                                                    <a href="register.xhtml" style="color: blanchedalmond">Hesabın yok mu? Üye ol</a>
                                                     <h:commandButton type="submit" class="btn float-right login_btn" value="Giriş" action="#{user.login()}"/>
                                                 </div>
                                         </h:form>

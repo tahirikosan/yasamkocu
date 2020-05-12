@@ -6,21 +6,106 @@
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets">  
     <h:head>  
         <title>Blog</title>  
-    </h:head>  
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+        <style>
+            .bottom-left {
+                position: absolute;
+                bottom: 8px;
+                left: 25px;
+                color:white;
+                margin: 3%;
+                text-shadow: 2px 2px #4a4a4a;
+              }
+        </style>
+        
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     
+  
+    </h:head> 
     <h:body>  
+        
+                <div class="container" style="padding-top:5px;margin-bottom: 20px; margin-left: 250px;">
+            <div class="row">
+                <div class="col-xs-12" style="margin-right: 30px;">
+                         <div class="dropdown">
+                             <h:button class="btn btn-success"  value=" Ana Sayfa" style="width: 120px;"  id="dropdownMenuButton" outcome="main_menu.xhtml"/>
+                        </div>
+                </div>
+                <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px;">
+                            <button class="btn btn-success dropdown-toggle" style="width: 120px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Beslenme
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="nutrition.xhtml">Alınan Kalori</a>
+                              <a class="dropdown-item" href="recipe.xhtml">Fit Tarifler</a>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px;">
+                                <h:button class="btn btn-success"  value="Spor" style="width: 120px;"  id="dropdownMenuButton_2" outcome="exercise.xhtml"/>
+                        </div>
+                </div>
+                 <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px">
+                                <h:button class="btn btn-success"  value="Blog" style="width: 120px;"  id="dropdownMenuButton_3" outcome="blog.xhtml"/>
+                        </div>
+                </div>
+                <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px">
+                            <button class="btn btn-success dropdown-toggle" style="width: 120px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Psikoloji
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="meditation.xhtml">Meditasyon</a>
+                              <a class="dropdown-item" href="kisilikTesti.xhtml">Kişilik Testi</a>
+                           
+                            </div>
+                        </div>
+                </div>
+                 <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px">
+                            <button class="btn btn-success dropdown-toggle" style="width: 120px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               Profil
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="profil.xhtml">Profil</a>
+                              <a class="dropdown-item" href="settings.xhtml">Ayarlar</a>
+                              <a class="dropdown-item" href="login.xhtml">Çıkış</a>
+                            </div>
+                        </div>
+                </div>
+            </div>   
+        </div>
+
  
-    <h1>List Blog Texts</h1>
-    
-        <h:form>
-            <ui:repeat var="text" value="#{BlogBean.getBlogList()}">
-                <h:panelGroup layout="block" id="container">
-                    <h:commandLink action="#{BlogBean.getBlog(text.id)}" style="display:block;">
-                        <h2>#{text.title}</h2>
-                        <h4>#{text.imageUrl}</h4>
-                    </h:commandLink>
-                </h:panelGroup>
-            </ui:repeat>
-        </h:form>
-         
+        
+        <div class="container">
+            <div style="margin:2%;">
+                <h1 class="display-4">Blog Yazılarımız</h1>
+                <p class="lead">Okuyun öğrenin, kendinizi geliştirin! Bu yazılar kendinizi yeniden tanımanızı sağlayacak.</p>
+            </div>           
+                <h:form>
+                    <div class="row">
+                        <ui:repeat var="text" value="#{BlogBean.getBlogList()}">
+                            <h:panelGroup layout="block" id="container" class="col-md-4" >
+
+                                <h:commandLink action="#{BlogBean.getBlog(text.id)}" style="display:block;">
+                                    <div style="margin:3%">
+                                        <img src="#{text.imageUrl}" class="img-fluid" alt="Responsive image"></img>
+                                        <div class="bottom-left"><h4>#{text.title}</h4></div>
+                                    </div>
+                                </h:commandLink>
+
+                            </h:panelGroup>
+                        </ui:repeat>
+                    </div>
+                </h:form>             
+        </div>
+       
     </h:body>  
 </html>  
