@@ -5,16 +5,76 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:f="http://xmlns.jcp.org/jsf/core"
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
         <title>Kişilik Testi</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"></link>  
-    </head>
-    <body>
+    </h:head>
+    <h:body>
+            <div class="container" style="padding-top:5px;margin-bottom: 20px; margin-left: 255px;">
+            <div class="row">
+                <div class="col-xs-12" style="margin-right: 30px;">
+                         <div class="dropdown">
+                             <h:button class="btn btn-success"  value=" Ana Sayfa" style="width: 120px;"  id="dropdownMenuButton" outcome="main_menu.xhtml"/>
+                        </div>
+                </div>
+                <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px;">
+                            <button class="btn btn-success dropdown-toggle" style="width: 120px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Beslenme
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="nutrition.xhtml">Alınan Kalori</a>
+                              <a class="dropdown-item" href="recipe.xhtml">Fit Tarifler</a>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px;">
+                                <h:button class="btn btn-success"  value="Spor" style="width: 120px;"  id="dropdownMenuButton_2" outcome="exercise.xhtml"/>
+                        </div>
+                </div>
+                 <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px">
+                                <h:button class="btn btn-success"  value="Blog" style="width: 120px;"  id="dropdownMenuButton_3" outcome="blog.xhtml"/>
+                        </div>
+                </div>
+                <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px">
+                            <button class="btn btn-success dropdown-toggle" style="width: 120px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Psikoloji
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="meditation.xhtml">Meditasyon</a>
+                              <a class="dropdown-item" href="kisilikTesti.xhtml">Kişilik Testi</a>
+                           
+                            </div>
+                        </div>
+                </div>
+                 <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px">
+                            <button class="btn btn-success dropdown-toggle" style="width: 120px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               Profil
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="profil.xhtml">Profil</a>
+                              <a class="dropdown-item" href="settings.xhtml">Ayarlar</a>
+                              <a class="dropdown-item" href="login.xhtml">Çıkış</a>
+                            </div>
+                        </div>
+                </div>
+            </div>   
+        </div>
+        
+        
         <div class="text-center mb-4 mt-2">
             <h1>Kişilik Tipinizi Öğrenin</h1> 
         </div>  
-        <div class="container">
+        <div class="container" style="margin-left: 170px;">
 
             <table class="table table-borderless" id='table'>
                 <thead>
@@ -109,11 +169,11 @@ and open the template in the editor.
             <div class="text-center" style="margin:0.8%;">
                 <button class="btn btn-success mt-1" id="btn1" style=" background-color:#04B404" onclick="checkboxes()">Kişilik Tipimi Göster</button>
                 <h1 id="demo"></h1>
-                <p id='analizci' style='display:none'>"analizci Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                <p id='destekci' style='display:none'>"destekci Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                <p id='kontrolcu' style='display:none'>"kontrolcu Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                <p id='tesvikci' style='display:none'>"tesvikci Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                <p id='dengeli' style='display:none'>"dengeli Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <p id='analizci' style='display:none'>"Analistler, çalıştıkları kurumun ihtiyaçlarına uygun olarak çözümlemeler yaparlar. Firmaların proje, ürün ya da hizmet geliştirme süreçlerinde birinci derecede görev alırlar. Analistlerin görevleri, çalıştıkları alana göre değişiklik gösterebilir ama neredeyse hepsi için ortak olan görev ve sorumluluklar bulunur."</p>
+                <p id='destekci' style='display:none'>"Savunmacılar gerçekten de fedakardırlar, kibarlığa aşırı kibarlık ile karşılık verirler ve inandıkları işler ile insanlara istek ve cömertlik ile yaklaşırlar."</p>
+                <p id='kontrolcu' style='display:none'>"Kontrolcü doğulmaz, olunur. İnsanı böyle yapan herhangi bir gen, biyolojik ya da fizyolojik bir etken yoktur. Bu eğilim veya başkalarını kontrol etmeye duyulan ihtiyaç kültürle geçer. Bu öncelikle genel çevreden sonra da aileden geçen bir şey."</p>
+                <p id='tesvikci' style='display:none'>" Bu insanlara dışa dönük karakterler arasında çok fazla rastlanıyor. Ama açık, vicdanlı, sorumluluk duygusu yüksek, uzlaşmacı kişiler ben merkezci olmuyor. Araştırma ergen erkeklerin çoğunu bu kategoride tamamlıyor. Bu kategorideki bireylerin sayısı yaşla doğru orantılı. Erken yaşlarda bu kişilere daha çok rastlanıyor."</p>
+                <p id='dengeli' style='display:none'>"Mantık ve duygular arasındaki savaş bir nevi kalp ve beyin arasındaki savaştır. Beyin ve kalp arasında yapılan her savaş sonucunda bu ikisinden biri galip geliyor ve kararlarımızı da bu sonuca göre alıyoruz."</p>
 
             
             
@@ -181,5 +241,5 @@ and open the template in the editor.
                     }
                     //]]>
         </script>
-    </body>
+    </h:body>
 </html>

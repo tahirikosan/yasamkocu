@@ -79,24 +79,24 @@
 
         
         <div class="row">
-            <div class="ml-3 col-4 mb-4">
-                <h1>Count today's taken calories</h1>
+            <div class="ml-3 col-6 mb-4">
+                <h1>Bugün alınan kaloriyi hesapla</h1>
                 <hr></hr>
                 <h:form>
                     <h:panelGroup class="form-row-9">
                         <h:panelGroup class="form-group">
-                            <h:outputText value="Enter the nutrition's name: "/>
+                            <h:outputText value="Besin adı gir: "/>
                             <h:inputText class="form-control col-sm-6 mb-2" value="#{NutritionBean.name}" required="true"/>
                         </h:panelGroup>    
                         <h:panelGroup class="form-group">
-                            <h:outputText value="Enter the calories per gram: "/>
+                            <h:outputText value="Gram başına kalori miktarı gir: "/>
                             <h:inputText class="form-control col-sm-6 mb-2" value="#{NutritionBean.cal}"/>
                         </h:panelGroup>     
                         <h:panelGroup class="form-group">
-                            <h:outputText value="Enter the image url: "/>
+                            <h:outputText value="Resim için url gir: "/>
                             <h:inputText class="form-control col-sm-6 mb-2" value="#{NutritionBean.imageurl}"/><br></br>
                         </h:panelGroup>   
-                        <h:commandButton class="btn btn-success " style=" background-color:#04B404"   value="Add New Nutrition" action="#{NutritionBean.add(user.id)}"/> 
+                        <h:commandButton class="btn btn-success " style=" background-color:#04B404"   value="Yeni Besin Ekle" action="#{NutritionBean.add(user.id)}"/> 
                     </h:panelGroup>
                 </h:form>
             </div>
@@ -132,10 +132,10 @@
 
             <div class="col-4">
                 <h:panelGroup>
-                    <h2>What did you eat today?</h2>
+                    <h2>Bugün neler yedin bakalım?</h2>
                     <h:dataTable value = "#{UserNutritionBean.getUserNutritions(user.id)}" class="table mt-4" var = "usernutrition">
                         <h:column>
-                            <f:facet name = "header">Nutrition Name </f:facet>
+                            <f:facet name = "header">Besin Adı </f:facet>
                                 #{usernutrition.name}
                         </h:column>
                         <h:column>
