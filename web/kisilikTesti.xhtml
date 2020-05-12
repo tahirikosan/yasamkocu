@@ -8,182 +8,178 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>Kişilik Testi</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"></link>  
     </head>
     <body>
-        <div>
-            <h2>A</h2>
-            <input type="checkbox" name="a" />Beden dili durağan
-            <br/>
-            <input type="checkbox" name="a" />Toplulukla konuşmayı sevmez
-            <br/>
-            <input type="checkbox" name="a" />Duygu ve düşüncelerini zor açıklar
-            <br/>
-             <input type="checkbox" name="a" />Takım çalışmasına yatkın
-            <br/>
-            <input type="checkbox" name="a" />Sabırlı
-            <br/>
-            <input type="checkbox" name="a" />Başlangıcı karşı tarafa bırakır
-            <br/>
-             <input type="checkbox" name="a" />Rakamlara bağlı konuşur
-            <br/>
-            <input type="checkbox" name="a" />Risklerden hoşlanmaz
-            <br/>
-            <input type="checkbox" name="a" />Süreç önemlidir
-            <br/>
-             <input type="checkbox" name="a" />İlk anda göz teması kurmaz
-            <br/>
-            <input type="checkbox" name="a" />Genelde naziktir
-            <br/>
-            <input type="checkbox" name="a" />Mükemmeli arar
-            <br/>
-             <input type="checkbox" name="a" />İçinde duygusal, içinde serttir
-            <br/>
-            <input type="checkbox" name="a" />Odaklanabilir
-            <br/>
-            <input type="checkbox" name="a" />Harketleri çok hızlı değildir
-            <br/>
-            <input type="checkbox" name="a" />Kuralcıdır
-        </div>
-       <div>
-            <h2>B</h2>
-            <input type="checkbox" name="b" />Keskin sözcükler kullanır
-            <br/>
-            <input type="checkbox" name="b" />Grup çalışmalarına katılır
-            <br/>
-            <input type="checkbox" name="b" />Lider olmak ister
-            <br/>
-            <input type="checkbox" name="b" />Kendine güvenli tavırları vardır
-            <br/>
-            <input type="checkbox" name="b" />Sabırlı değildir
-            <br/>
-            <input type="checkbox" name="b" />Risk alabilir
-            <br/>
-            <input type="checkbox" name="b" />İlk anda göz teması kurabilir
-            <br/>
-            <input type="checkbox" name="b" />Ses tonu kararlıdır
-            <br/>
-            <input type="checkbox" name="b" />Sert ve ısrarcı olabilir
-            <br/>
-            <input type="checkbox" name="b" />Rekabetçidir
-            <br/>
-            <input type="checkbox" name="b" />Çok duygusal değildir
-            <br/>
-            <input type="checkbox" name="b" />Sonuca önem verir
-            <br/>
-            <input type="checkbox" name="b" />Girişken ve dışa odaklıdır
-            <br/>
-            <input type="checkbox" name="b" />Hareketleri hızlıdır
-            <br/>
-            <input type="checkbox" name="b" />Eyleme geçmek ister
-            <br/>
-            <input type="checkbox" name="b" />Beden dilini etkin kullanır
+        <div class="text-center mb-4 mt-2">
+            <h1>Kişilik Tipinizi Öğrenin</h1> 
+        </div>  
+        <div class="container">
+
+            <table class="table table-borderless" id='table'>
+                <thead>
+                    <tr>
+                        <th scope="col">A</th>
+                        <th scope="col">B</th>
+                        <th scope="col">C</th>
+                        <th scope="col">D</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox" name="a" /> Beden dili durağan</td>
+                        <td><input type="checkbox" name="b" /> Keskin sözcükler kullanır</td>
+                        <td><input type="checkbox" name="c" /> Resmi tavırlı</td>
+                        <td><input type="checkbox" name="d" /> Konunun dışına çıkar</td>
+                    </tr>
+                    <tr>
+                        <td> <input type="checkbox" name="a" /> Toplulukla konuşmayı sevmez</td>
+                        <td><input type="checkbox" name="b" /> Grup çalışmalarına katılır</td>
+                        <td> <input type="checkbox" name="c" /> Analitik düşünür</td>
+                        <td><input type="checkbox" name="d" /> İnce düşüncelidir</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="a" /> Duygu ve düşüncelerini zor açıklar</td>
+                        <td><input type="checkbox" name="b" /> Lider olmak ister</td>
+                        <td><input type="checkbox" name="c" /> Düzenli</td>
+                        <td><input type="checkbox" name="d" /> Fikirlere saplanır</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="a" /> Takım çalışmasına yatkın</td>
+                        <td><input type="checkbox" name="b" /> Kendine güvenli tavırları vardır</td>
+                        <td><input type="checkbox" name="c" /> Detaylara önem verir</td>
+                        <td><input type="checkbox" name="d" /> Zamanı çok iyi yönetemez</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="a" /> Sabırlı</td>
+                        <td><input type="checkbox" name="b" /> Sabırlı değildir</td>
+                        <td><input type="checkbox" name="c" /> Zaman planlaması yapar</td>
+                        <td><input type="checkbox" name="d" /> Zorlanmayı sevmez</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="a" /> Başlangıcı karşı tarafa bırakır</td>
+                        <td><input type="checkbox" name="b" /> Risk alabilir</td>
+                        <td><input type="checkbox" name="c" /> Konunun dışına çıkmaz</td>
+                        <td><input type="checkbox" name="d" /> Yüzü duygularını anlatır</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="a" /> Rakamlara bağlı konuşur</td>
+                        <td><input type="checkbox" name="b" /> İlk anda göz teması kurabilir</td>
+                        <td><input type="checkbox" name="c" /> Duygularını kolay açamaz</td>
+                        <td> <input type="checkbox" name="d" /> Anaç ve korumacıdır</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="a" /> Risklerden hoşlanmaz</td>
+                        <td><input type="checkbox" name="b" /> Ses tonu kararlıdır</td>
+                        <td><input type="checkbox" name="c" /> Olaylara saplanır</td>
+                        <td><input type="checkbox" name="d" /> Uyumludur</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="a" /> Süreç önemlidir</td>
+                        <td><input type="checkbox" name="b" /> Sert ve ısrarcı olabilir</td>
+                        <td><input type="checkbox" name="c" /> Sıralama ve kategorize etme eğilimi</td>
+                        <td><input type="checkbox" name="d" /> İşinden daha çok ilişkilerine önem verir</td>
+                    </tr>
+                    <tr>
+                        <td>  <input type="checkbox" name="a" /> İlk anda göz teması kurmaz</td>
+                        <td><input type="checkbox" name="b" /> Rekabetçidir</td>
+                        <td><input type="checkbox" name="c" /> Çalışmayı sever</td> 
+                        <td> <input type="checkbox" name="d" /> İlk karşılaşmada tanımak kolaydır</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="a" /> Genelde naziktir</td>
+                        <td><input type="checkbox" name="b" /> Çok duygusal değildir</td>
+                        <td><input type="checkbox" name="c" /> Dediğim dedik</td>
+                        <td><input type="checkbox" name="d" /> Fiziksel temasa açıktır</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="a" /> Mükemmeli arar</td>
+                        <td><input type="checkbox" name="b" /> Sonuca önem verir</td>
+                        <td><input type="checkbox" name="c" /> Doğrucudur</td>
+                        <td><input type="checkbox" name="d" /> Samimidir</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="a" /> İçinde duygusal, içinde serttir</td>
+                        <td><input type="checkbox" name="b" /> Girişken ve dışa odaklıdır</td>
+                        <td><input type="checkbox" name="c" /> Sistem yaratır, önem verir</td>
+                        <td><input type="checkbox" name="d" /> Takım oyuncusudur</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-center" style="margin:0.8%;">
+                <button class="btn btn-success mt-1" id="btn1" style=" background-color:#04B404" onclick="checkboxes()">Kişilik Tipimi Göster</button>
+                <h1 id="demo"></h1>
+                <p id='analizci' style='display:none'>"analizci Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <p id='destekci' style='display:none'>"destekci Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <p id='kontrolcu' style='display:none'>"kontrolcu Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <p id='tesvikci' style='display:none'>"tesvikci Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <p id='dengeli' style='display:none'>"dengeli Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+
+            
+            
+            
+            </div>
         </div> 
-        <div>
-            <h2>C</h2>
-            <input type="checkbox" name="c" />Resmi tavırlı
-            <br/>
-            <input type="checkbox" name="c" />Amalitik düşünür
-            <br/>
-            <input type="checkbox" name="c" />Düzenli
-            <br/>
-            <input type="checkbox" name="c" />Detaylara önem verir
-            <br/>
-            <input type="checkbox" name="c" />Zaman planlaması yapar
-            <br/>
-            <input type="checkbox" name="c" />Konunun dışına çıkmaz
-            <br/>
-            <input type="checkbox" name="c" />Duygularını kolay açamaz
-            <br/>
-            <input type="checkbox" name="c" />Olaylara saplanır
-            <br/>
-            <input type="checkbox" name="c" />Sıralama ve kategorize etme eğilimi
-            <br/>
-            <input type="checkbox" name="c" />Rekabetçi
-            <br/>
-            <input type="checkbox" name="c" />Dediğim dedik
-            <br/>
-            <input type="checkbox" name="c" />Sistem yaratır, önem verir
-            <br/>
-            <input type="checkbox" name="c" />Çalışmayı sever
-            <br/>
-            <input type="checkbox" name="c" />Doğrucudur
-        </div> 
-        <div>
-            <h2>D</h2>
-            <input type="checkbox" name="d" />Konunun dışına çıkar
-            <br/>
-            <input type="checkbox" name="d" />Sıcak ve insalcıldır
-            <br/>
-            <input type="checkbox" name="d" />İnce düşüncelidir
-            <br/>
-            <input type="checkbox" name="d" />Fikirlere saplanır
-            <br/>
-            <input type="checkbox" name="d" />Zamanı çok iyi yönetemez
-            <br/>
-            <input type="checkbox" name="d" />Zorlanmayı sevmez
-            <br/>
-            <input type="checkbox" name="d" />Yüzü duygularını anlatır
-            <br/>
-            <input type="checkbox" name="d" />Anaç ve korumacıdır
-            <br/>
-            <input type="checkbox" name="d" />Uyumludur
-            <br/>
-            <input type="checkbox" name="d" />İşinden daha çok ilişkilerine önem verir
-            <br/>
-            <input type="checkbox" name="d" />İlk karşılaşmada tanımak kolaydır
-            <br/>
-            <input type="checkbox" name="d" />Fiziksel temasa açıktır
-            <br/>
-            <input type="checkbox" name="d" />Samimidir
-            <br/>
-            <input type="checkbox" name="d" />Takım oyuncusudur
-        </div> 
-        <br/>
-        <button onclick="checkboxes()">Click me</button>
-        <h1 id="demo"></h1>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
         <script>
-            //<![CDATA[
-            function checkboxes(){
-                var checkboxes1 = document.getElementsByName("a");
-                var checkboxes2 = document.getElementsByName("b");
-                var checkboxes3 = document.getElementsByName("c");
-                var checkboxes4 = document.getElementsByName("d");
-                var number1 = 0;
-                var number2 = 0;
-                var number3 = 0;
-                var number4 = 0;
-                for(var i = 0; i < checkboxes1.length; i++)
-                {
-                    if(checkboxes1[i].checked==1){number1++;}
-                    if(checkboxes2[i].checked==1){number2++;}
-                }
-                for(var i = 0; i < checkboxes3.length; i++)
-                {
-                    if(checkboxes3[i].checked==1){number3++;}
-                    if(checkboxes4[i].checked==1){number4++;}
-                }
-                var x = number1 - number2;
-                var y = number3 - number4;
-                var kisilikTipi = "";
-                if(x > 0 && y > 0){
-                    kisilikTipi = "Analizci";
-                }
-                else if(x > 0 && y < 0){
-                    kisilikTipi = "Destekçi";
-                }
-                else if(x < 0 && y > 0){
-                    kisilikTipi = "Kontrolcü";
-                }
-                else if(x < 0 && y < 0){
-                    kisilikTipi = "Teşvikçi";
-                }else{
-                    kisilikTipi = "Dengesiz";
-                }
-                document.getElementById("demo").innerHTML = kisilikTipi;
-                //alert("Kişilik tipiniz: "+kisilikTipi);
-            }
-            //]]>
+                    //<![CDATA[
+                    function checkboxes() {
+                        document.getElementById('table').style.display = 'none';
+                        document.getElementById('btn1').style.display = 'none';
+
+                        var checkboxes1 = document.getElementsByName("a");
+                        var checkboxes2 = document.getElementsByName("b");
+                        var checkboxes3 = document.getElementsByName("c");
+                        var checkboxes4 = document.getElementsByName("d");
+                        var number1 = 0;
+                        var number2 = 0;
+                        var number3 = 0;
+                        var number4 = 0;
+                        for (var i = 0; i < checkboxes1.length; i++)
+                        {
+                            if (checkboxes1[i].checked == 1) {
+                                number1++;
+                            }
+                            if (checkboxes2[i].checked == 1) {
+                                number2++;
+                            }
+                        }
+                        for (var i = 0; i < checkboxes3.length; i++)
+                        {
+                            if (checkboxes3[i].checked == 1) {
+                                number3++;
+                            }
+                            if (checkboxes4[i].checked == 1) {
+                                number4++;
+                            }
+                        }
+                        var x = number1 - number2;
+                        var y = number3 - number4;
+                        var kisilikTipi = "";
+                        if (x > 0 && y > 0) {
+                            kisilikTipi = "Analizci";
+                            document.getElementById('analizci').style.display = 'block';
+                        } else if (x > 0 && y < 0) {
+                            kisilikTipi = "Destekçi";
+                            document.getElementById('destekci').style.display = 'block';
+                        } else if (x < 0 && y > 0) {
+                            kisilikTipi = "Kontrolcü";
+                            document.getElementById('kontrolcu').style.display = 'block';
+                        } else if (x < 0 && y < 0) {
+                            kisilikTipi = "Teşvikçi";
+                            document.getElementById('tesvikci').style.display = 'block';
+                        } else {
+                            kisilikTipi = "Dengeli";
+                            document.getElementById('dengeli').style.display = 'block';
+
+                        }
+                        document.getElementById("demo").innerHTML = kisilikTipi;
+                        //alert("Kişilik tipiniz: "+kisilikTipi);
+                    }
+                    //]]>
         </script>
     </body>
 </html>

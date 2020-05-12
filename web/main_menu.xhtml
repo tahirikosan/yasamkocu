@@ -22,6 +22,13 @@ and open the template in the editor.
 	<!--Custom styles-->
         <link rel="stylesheet" type="text/css" href="tahir.css"></link>
         
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     
+  
+        
         <style>
             .metin{
                 text-align: center;
@@ -40,44 +47,61 @@ and open the template in the editor.
     <h:body class="body_menu">
         
         <div>
-            <div class="menu-bar">
-                <ul>
-                    
-                    <li><a href="main_menu.xhtml">Ana Sayfa</a></li>
-                    <li>
-                        <a href="#">Beslenme</a>
-                        <div class="sub-menu-1">
-                            <ul>
-                                <li><a href="nutrition.xhtml">Alınan Kalori</a></li>
-                                <li><a href="recipe.xhtml">Fit Tarifler</a></li>
-                            </ul>
+                  <div class="container" style="padding-top:5px;margin-bottom: 20px; margin-left: 255px;">
+            <div class="row">
+                <div class="col-xs-12" style="margin-right: 30px;">
+                         <div class="dropdown">
+                             <h:button class="btn btn-success"  value=" Ana Sayfa" style="width: 120px;"  id="dropdownMenuButton" outcome="main_menu.xhtml"/>
                         </div>
-                    </li>
-                    <li>
-                        <a href="exercise.xhtml">Spor</a>
-                    </li>
-                    <li>
-                        <a href="psychology.xhtml">Psikoloji</a>
-                          <div class="sub-menu-1">
-                            <ul>
-                                <li><a href="meditation.xhtml" type="submit">Meditasyon</a></li>
-                                <li><a href="kisilikTesti.xhtml" type="submit">Kişilik Testi</a></li>
-                            </ul>
+                </div>
+                <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px;">
+                            <button class="btn btn-success dropdown-toggle" style="width: 120px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Beslenme
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="nutrition.xhtml">Alınan Kalori</a>
+                              <a class="dropdown-item" href="recipe.xhtml">Fit Tarifler</a>
+                            </div>
                         </div>
-                    </li>
-                    <li><a href="blog.xhtml">Blog</a></li>
-                    <li>
-                        <a href="#"><i class="fa fa-user"></i></a>
-                        <div class="sub-menu-1">
-                            <ul>
-                                <li><a href="profile.xhtml" type="submit">Profil</a></li>
-                                <li><a href="settings.xhtml" type="submit">Ayarlar</a></li>
-                                <li><a href="login.xhtml">Çıkış</a></li>
-                            </ul>
+                </div>
+                <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px;">
+                                <h:button class="btn btn-success"  value="Spor" style="width: 120px;"  id="dropdownMenuButton_2" outcome="exercise.xhtml"/>
                         </div>
-                    </li>
-                </ul>
-            </div>
+                </div>
+                 <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px">
+                                <h:button class="btn btn-success"  value="Blog" style="width: 120px;"  id="dropdownMenuButton_3" outcome="blog.xhtml"/>
+                        </div>
+                </div>
+                <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px">
+                            <button class="btn btn-success dropdown-toggle" style="width: 120px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Psikoloji
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="meditation.xhtml">Meditasyon</a>
+                              <a class="dropdown-item" href="kisilikTesti.xhtml">Kişilik Testi</a>
+                           
+                            </div>
+                        </div>
+                </div>
+                 <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px">
+                            <button class="btn btn-success dropdown-toggle" style="width: 120px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               Profil
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="profil.xhtml">Profil</a>
+                              <a class="dropdown-item" href="settings.xhtml">Ayarlar</a>
+                              <a class="dropdown-item" href="login.xhtml">Çıkış</a>
+                            </div>
+                        </div>
+                </div>
+            </div>   
+        </div>
+
 
             <div style="width: 50%; display: table; margin: auto;margin-top: 50px; margin-bottom: 50px; ">
                 <div style="display: table-row;">
@@ -96,7 +120,7 @@ and open the template in the editor.
                                            <h:panelGroup layout="block" id="container">
                                                <h:commandLink  action="#{BlogBean.getBlog(text.id)}" style="display:block; color: purple; font-weight: bold">
                                                    <p style="margin-left: 10px">#{text.title}</p>
-                                                   <img src="#{text.imageUrl}" style="height: 200px; border-radius: 12px; margin-bottom: 30px;"/>
+                                                   <img src="#{text.imageUrl}" style="height: 200px;width: 200px; border-radius: 12px; margin-bottom: 30px;"/>
                                                </h:commandLink>
                                            </h:panelGroup>
                                        </ui:repeat>
@@ -120,7 +144,7 @@ and open the template in the editor.
                                            <h:panelGroup layout="block" id="container">
                                                 <h:commandLink  action="#{RecipeBean.getRecipe(recipe.id)}" style="display:block; color: purple; font-weight: bold">
                                                    <p style="margin-left: 10px">#{recipe.title}</p>
-                                                   <img src="#{recipe.imageUrl}" style="height: 200px; border-radius: 12px; margin-bottom: 30px;"/>
+                                                   <img src="#{recipe.imageUrl}" style="height: 200px;width: 200px; border-radius: 12px; margin-bottom: 30px;"/>
                                                 </h:commandLink>
                                            </h:panelGroup>
                                        </ui:repeat>

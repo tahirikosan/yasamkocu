@@ -126,11 +126,12 @@ public class DBLayerTahir {
     }
     
     // Login
-    public int loginUser(User user){
+    public User loginUser(User user){
         if(conn == null){
             connect();
         }
-        
+        User tmpUser = new User();
+        tmpUser.setId(-1);
         try {
             String query = "SELECT * FROM kullanici WHERE email = '" +user.getEmail()+ "' AND password = '" +user.getPassword()+"'";
             Statement statement = conn.createStatement();
@@ -139,16 +140,16 @@ public class DBLayerTahir {
             
             while(result.next()){
                 
-                return result.getInt(1);
+                return new User(result.getInt(1), result.getString(2), result.getString(3), result.getString(4),result.getString(5),result.getString(6), result.getInt(7), result.getInt(8), result.getInt(9));
             }
             
-            return -1;
+            return tmpUser;
         
         } catch (Exception e) {
             System.out.println("Login hata " + e.toString());
         }
         
-        return -1;
+        return tmpUser;
     }
     
     public boolean updateUser(User user){
@@ -186,10 +187,10 @@ public class DBLayerTahir {
         
         db.connect();
         
-        User user = new User(1, "degıstı",  "c@gmail.com",  "Silgi123",  "degıstı", 100,  "degıstı", 99, 0);
+        //User user = new User(1, "degıstı",  "c@gmail.com",  "Silgi123",  "degıstı", 100,  "degıstı", 99, 0);
         //db.registerUser(user);
         //db.loginUser(user);
-        db.updateUser(user);
+        //db.updateUser(user);
         
         
     }

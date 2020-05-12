@@ -6,69 +6,155 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
-        <title>Facelet Title</title>
-
+        <title>LifeCoach</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"></link>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+         <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     
+        
     </h:head>
     <h:body>
-        <h1>Count Your Calories</h1>
-        <h:form>
-            <h:panelGroup>
-                <h:outputText value="Enter the Nutrition"/>
-                <h:inputText value="#{NutritionBean.name}" required="true"/><br></br>
+  
+        <div class="container" style="padding-top:5px;margin-bottom: 20px; margin-left: 255px;">
+            <div class="row">
+                <div class="col-xs-12" style="margin-right: 30px;">
+                         <div class="dropdown">
+                             <h:button class="btn btn-success"  value=" Ana Sayfa" style="width: 120px;"  id="dropdownMenuButton" outcome="main_menu.xhtml"/>
+                        </div>
+                </div>
+                <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px;">
+                            <button class="btn btn-success dropdown-toggle" style="width: 120px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Beslenme
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="nutrition.xhtml">Alınan Kalori</a>
+                              <a class="dropdown-item" href="recipe.xhtml">Fit Tarifler</a>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px;">
+                                <h:button class="btn btn-success"  value="Spor" style="width: 120px;"  id="dropdownMenuButton_2" outcome="exercise.xhtml"/>
+                        </div>
+                </div>
+                 <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px">
+                                <h:button class="btn btn-success"  value="Blog" style="width: 120px;"  id="dropdownMenuButton_3" outcome="blog.xhtml"/>
+                        </div>
+                </div>
+                <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px">
+                            <button class="btn btn-success dropdown-toggle" style="width: 120px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Psikoloji
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="meditation.xhtml">Meditasyon</a>
+                              <a class="dropdown-item" href="kisilikTesti.xhtml">Kişilik Testi</a>
+                           
+                            </div>
+                        </div>
+                </div>
+                 <div class="col-xs-12">
+                         <div class="dropdown" style="margin-right: 20px">
+                            <button class="btn btn-success dropdown-toggle" style="width: 120px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               Profil
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="profil.xhtml">Profil</a>
+                              <a class="dropdown-item" href="settings.xhtml">Ayarlar</a>
+                              <a class="dropdown-item" href="login.xhtml">Çıkış</a>
+                            </div>
+                        </div>
+                </div>
+            </div>   
+        </div>
 
-                <h:outputText value="Enter the calories per gram"/>
-                <h:inputText value="#{NutritionBean.cal}"/><br></br>
+           
 
-                <h:outputText value="Enter the image url"/>
-                <h:inputText value="#{NutritionBean.imageurl}"/><br></br>
-
-                <h:commandButton value="ADD" action="#{NutritionBean.add(user.id)}"/>
-            </h:panelGroup>
-        </h:form> 
-
-
-        <h:panelGroup>
-            <c:forEach var="nutrition" items="#{NutritionBean.getNutritions(user.id)}">
-
-                <h:graphicImage  value = "#{nutrition.imageurl}"/>
-                <h:outputText value="#{nutrition.name}"/> 
+        
+        <div class="row">
+            <div class="ml-3 col-4 mb-4">
+                <h1>Count today's taken calories</h1>
+                <hr></hr>
                 <h:form>
-                    <h:inputHidden value="#{nutrition.id}"></h:inputHidden>
-                    <h:outputText value="Enter the Gram"/>
-                    <h:inputText value="#{UserNutritionBean.nutritiongr}" required="true"/>
-                    <h:commandButton value="ADD" action="#{UserNutritionBean.addUserNutrition(nutrition.id,UserNutritionBean.nutritiongr,user.id)}"/>
+                    <h:panelGroup class="form-row-9">
+                        <h:panelGroup class="form-group">
+                            <h:outputText value="Enter the nutrition's name: "/>
+                            <h:inputText class="form-control col-sm-6 mb-2" value="#{NutritionBean.name}" required="true"/>
+                        </h:panelGroup>    
+                        <h:panelGroup class="form-group">
+                            <h:outputText value="Enter the calories per gram: "/>
+                            <h:inputText class="form-control col-sm-6 mb-2" value="#{NutritionBean.cal}"/>
+                        </h:panelGroup>     
+                        <h:panelGroup class="form-group">
+                            <h:outputText value="Enter the image url: "/>
+                            <h:inputText class="form-control col-sm-6 mb-2" value="#{NutritionBean.imageurl}"/><br></br>
+                        </h:panelGroup>   
+                        <h:commandButton class="btn btn-success " style=" background-color:#04B404"   value="Add New Nutrition" action="#{NutritionBean.add(user.id)}"/> 
+                    </h:panelGroup>
                 </h:form>
-                <h:form>
-                    <h:commandButton value="SIL" action="#{NutritionBean.DeleteNutritions(nutrition.id,user.id)}"/>
-                </h:form>  
+            </div>
+            <div class="col-3"></div>   
+        </div>
 
-            </c:forEach>
-        </h:panelGroup>
+        <div class="row">
+            <div class="col-8">
+                <div class="row">
+                    <c:forEach var="nutrition" items="#{NutritionBean.getNutritions(user.id)}"> 
+                        <div class="card ml-3 mt-3"  style="width: 300px;">
+                            <h:form>
+                                <div class="row">
+                                    <div class="col-10"></div>
+                                    <div class="col-2">
+                                        <h:commandButton value="X" class="btn btn-success btn-sm" style="background-color:#04B404; " action="#{NutritionBean.DeleteNutritions(nutrition.id,user.id)}"/>
+                                    </div>
+                                </div>
+                            </h:form>  
+                            <h:graphicImage class="card-img-top" value = "#{nutrition.imageurl}"/>
+                            <div class="card-body text-center">
+                                <h5 class="card-title"> <h:outputText value="#{nutrition.name}"/></h5>
+                                <h:form>
+                                    <h:outputText value="Enter the Gram: "/>
+                                    <h:inputText value="#{UserNutritionBean.nutritiongr}" required="true"/>
+                                    <h:commandButton value="I ate this today" class="btn btn-success btn btn-primary stretched-link mt-1" style=" background-color:#04B404" action="#{UserNutritionBean.addUserNutrition(nutrition.id,UserNutritionBean.nutritiongr,user.id)}"/>
+                                </h:form>
+                            </div> 
+                        </div>
+                    </c:forEach>  
+                </div>
+            </div>
+
+            <div class="col-4">
+                <h:panelGroup>
+                    <h2>What did you eat today?</h2>
+                    <h:dataTable value = "#{UserNutritionBean.getUserNutritions(user.id)}" class="table mt-4" var = "usernutrition">
+                        <h:column>
+                            <f:facet name = "header">Nutrition Name </f:facet>
+                                #{usernutrition.name}
+                        </h:column>
+                        <h:column>
+                            <f:facet name = "header">Gram</f:facet>
+                                #{usernutrition.nutritiongr}
+                        </h:column>  <h:column>
+                            <h:form>
+                                <h:commandButton class="btn btn-success btn-sm" value="Delete" action="#{UserNutritionBean.DeleteUserNutrition(usernutrition.id)}"/>
+                            </h:form>  
+                        </h:column>         
+                    </h:dataTable> 
+                </h:panelGroup>  
 
 
-        <h:panelGroup>
-            <h2>What did you eat today?</h2>
-            <h:dataTable value = "#{UserNutritionBean.getUserNutritions(user.id)}" var = "usernutrition">
-
-                <h:column>
-                    <f:facet name = "header">Nutrition Name </f:facet>
-                        #{usernutrition.name}
-                </h:column>
-                <h:column>
-                    <f:facet name = "header">Gram</f:facet>
-                        #{usernutrition.nutritiongr}
-                </h:column>  <h:column>
-                    <h:form>
-                        <h:commandButton value="SIL" action="#{UserNutritionBean.DeleteUserNutrition(usernutrition.id)}"/>
-                    </h:form>  
-                </h:column>         
-            </h:dataTable> 
-        </h:panelGroup>  
-
-        <h:panelGroup>
-            <h:outputText value="Total:"/>
-            <h:outputText value="#{UserNutritionBean.TotalCalNutrition(user.id)}"/>
-        </h:panelGroup>
+                <div class="alert alert-success" role="alert">
+                    <h5 style="text-align: center;">Total: #{UserNutritionBean.TotalCalNutrition(user.id)}</h5>
+                </div>
+            </div>
+        </div>
     </h:body>
 </html>
 

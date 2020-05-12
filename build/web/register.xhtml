@@ -24,6 +24,13 @@ and open the template in the editor.
     
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     
+  
     </h:head>
     <h:body class="body_login">
         
@@ -57,30 +64,30 @@ and open the template in the editor.
                                              
                                                 <div class="input-group form-group">
                                                      
-                                                        <h:inputText id="password" class="form-control" value="#{user.password}"   pt:placeholder="Şifre">
+                                                        <h:inputSecret id="password" class="form-control" value="#{user.password}"   pt:placeholder="Şifre">
                                                           <!--   <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})"/> -->
-                                                        </h:inputText>  
+                                                        </h:inputSecret>  
                                                 </div>
                                              
                                                 <div class="input-group form-group">
                                                   
-                                                        <h:inputText id="password_c" class="form-control" value="#{user.password_c}"  pt:placeholder="Şifre tekrar">
+                                                        <h:inputSecret id="password_c" class="form-control" value="#{user.password_c}"  pt:placeholder="Şifre tekrar">
                                                           <!--   <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})"/> -->
-                                                        </h:inputText>  
+                                                        </h:inputSecret>  
                                                 </div>
                                              
                                                 <div class="input-group form-group">
-                                                    <span class="input-group-text"><i>Age</i></span>
+                                                    <span class="input-group-text"><i>Yaş</i></span>
                                                     <h:inputText id="age"  class="form-control"  value="#{user.age}"  pt:placeholder="Yaş"/> 
                                                 </div>
                                              
                                                 <div class="input-group form-group">
-                                                   <span class="input-group-text"><i>Height</i></span>
+                                                   <span class="input-group-text"><i>Boy</i></span>
                                                    <h:inputText id="height" class="form-control"   value="#{user.height}"  pt:placeholder="Boy"/> 
                                                 </div>
                                             
                                                 <div class="input-group form-group">
-                                                   <span class="input-group-text"><i>Weight</i></span>    
+                                                   <span class="input-group-text"><i>Kilo</i></span>    
                                                   <h:inputText id="weight" class="form-control"   value="#{user.weight}"  pt:placeholder="Kilo"/> 
                                                 </div>
                                         
@@ -89,8 +96,8 @@ and open the template in the editor.
                                                 </div>
                                              
                                               <h:selectOneRadio value="#{user.gender}" class="form-control" >
-                                                    <f:selectItem class="form-control" itemValue="male" itemLabel="Male" />
-                                                    <f:selectItem class="form-control" itemValue="female" itemLabel="Female" />
+                                                    <f:selectItem class="form-control" itemValue="male" itemLabel="Erkek" />
+                                                    <f:selectItem class="form-control" itemValue="female" itemLabel="Kadın" />
                                                </h:selectOneRadio>
                                              
                                                <div class="input-group-prepend">
