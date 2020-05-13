@@ -131,7 +131,7 @@ public class DBLayerEda {
         
         try{
             Statement statement = conn.createStatement();
-            ResultSet result = statement.executeQuery("SELECT count(*) FROM USER_RECIPES INNER JOIN FIT_RECIPES ON USER_RECIPES.RECIPEID=FIT_RECIPES.ID WHERE USER_RECIPES.USERID="+userid+" AND FIT_RECIPES.LABEL='"+label+"'");
+            ResultSet result = statement.executeQuery("SELECT count(*) FROM USER_RECIPES INNER JOIN FIT_RECIPES ON USER_RECIPES.RECIPEID=FIT_RECIPES.ID WHERE USER_RECIPES.USERID="+userid+" AND FIT_RECIPES.LABEL='"+label+"' AND USER_RECIPES.READINGDATE='"+date+"'");
             
             result.next();
             

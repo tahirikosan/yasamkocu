@@ -181,18 +181,7 @@ public class DBLayerTahir {
         return false;
     }
     
-    public static void main(String[] args) {
-        DBLayerTahir db = new DBLayerTahir();
-        
-        db.connect();
-        
-        User user = new User(1, "degıstı",  "c@gmail.com",  "Silgi123",  "degıstı", 100,  "degıstı", 99, 0);
-        //db.registerUser(user);
-        //db.loginUser(user);
-        db.updateUser(user);
-        
-        
-    }
+    
     
  
     

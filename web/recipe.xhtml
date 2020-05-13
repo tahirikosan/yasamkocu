@@ -5,22 +5,41 @@
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets">  
     <h:head>  
-        <title>Blog</title>  
+        <title>Fit Tarifler</title>  
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+        <style>
+            .bottom-left {
+                position: absolute;
+                bottom: 8px;
+                left: 25px;
+                color:white;
+                margin: 3%;
+                text-shadow: 2px 2px grey;
+              }
+        </style>
     </h:head>  
-    <h:body>  
- 
-    <h1>List Recipes</h1>
-    
-        <h:form>
-            <ui:repeat var="recipe" value="#{RecipeBean.getRecipeList()}">
-                <h:panelGroup layout="block" id="container">
-                    <h:commandLink action="#{RecipeBean.getRecipe(recipe.id)}" style="display:block;">
-                        <h2>#{recipe.title}</h2>
-                        <h4>#{recipe.imageUrl}</h4>
-                    </h:commandLink>
-                </h:panelGroup>
-            </ui:repeat>
-        </h:form>
-         
-    </h:body>  
+    <h:body> 
+        <div class="container">
+            <div style="margin:2%;">
+                <h1 class="display-4">Sağlıklı ve Fit Tarifler</h1>
+                <p class="lead">Bu tarifler sağlığınıza iyi gelecek!</p>
+            </div>           
+                <h:form>
+                    <div class="row">
+                        <ui:repeat var="recipe" value="#{RecipeBean.getRecipeList()}">
+                            <h:panelGroup layout="block" id="container" class="col-md-4" >
+
+                                <h:commandLink action="#{RecipeBean.getRecipe(recipe.id)}" style="display:block;">
+                                    <div style="margin:3%">
+                                        <img src="#{recipe.imageUrl}" class="img-fluid" alt="Responsive image"></img>
+                                        <div class="bottom-left"><h4>#{recipe.title}</h4></div>
+                                    </div>
+                                </h:commandLink>
+
+                            </h:panelGroup>
+                        </ui:repeat>
+                    </div>
+                </h:form>             
+        </div>
+    </h:body> 
 </html>  

@@ -102,6 +102,7 @@ public class DBLayer {
         return false;
     }
     
+    /*
     public static void main(String[] args) {
         DBLayer db = new DBLayer();
         
@@ -112,6 +113,7 @@ public class DBLayer {
         
         
     }
+    */
     
  
     

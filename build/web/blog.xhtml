@@ -6,21 +6,43 @@
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets">  
     <h:head>  
         <title>Blog</title>  
-    </h:head>  
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+        <style>
+            .bottom-left {
+                position: absolute;
+                bottom: 8px;
+                left: 25px;
+                color:white;
+                margin: 3%;
+                text-shadow: 2px 2px #4a4a4a;
+              }
+        </style>
+    </h:head> 
     <h:body>  
  
-    <h1>List Blog Texts</h1>
-    
-        <h:form>
-            <ui:repeat var="text" value="#{BlogBean.getBlogList()}">
-                <h:panelGroup layout="block" id="container">
-                    <h:commandLink action="#{BlogBean.getBlog(text.id)}" style="display:block;">
-                        <h2>#{text.title}</h2>
-                        <h4>#{text.imageUrl}</h4>
-                    </h:commandLink>
-                </h:panelGroup>
-            </ui:repeat>
-        </h:form>
-         
+        
+        <div class="container">
+            <div style="margin:2%;">
+                <h1 class="display-4">Blog Yazılarımız</h1>
+                <p class="lead">Okuyuni öğrenin, kendinizi geliştirin! Bu yazılar kendinizi yeniden tanımanızı sağlayacak.</p>
+            </div>           
+                <h:form>
+                    <div class="row">
+                        <ui:repeat var="text" value="#{BlogBean.getBlogList()}">
+                            <h:panelGroup layout="block" id="container" class="col-md-4" >
+
+                                <h:commandLink action="#{BlogBean.getBlog(text.id)}" style="display:block;">
+                                    <div style="margin:3%">
+                                        <img src="#{text.imageUrl}" class="img-fluid" alt="Responsive image"></img>
+                                        <div class="bottom-left"><h4>#{text.title}</h4></div>
+                                    </div>
+                                </h:commandLink>
+
+                            </h:panelGroup>
+                        </ui:repeat>
+                    </div>
+                </h:form>             
+        </div>
+       
     </h:body>  
 </html>  
