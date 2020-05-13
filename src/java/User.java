@@ -57,7 +57,7 @@ public class User {
     public User(){
     }
 
-    public User(int id, String name, String email, String password, String surname, String gender, int height, int weight, int age) {
+    public User(int id, String name, String surname, String password, String email, String gender, int height, int weight, int age) {
         this.id = id;
         this.name = name;
         this.email = email;

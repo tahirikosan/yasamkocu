@@ -14,16 +14,17 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
      
-  
-    
+    <script src="jquery.js"></script> 
+   
+ 
     </h:head>
     <h:body>
-        
-                <div class="container" style="padding-top:5px;margin-bottom: 20px; margin-left: 250px;">
+       
+         <div style="width: 60%; display: table; margin: auto;margin-top: 10px;">
             <div class="row">
                 <div class="col-xs-12" style="margin-right: 30px;">
                          <div class="dropdown">
-                             <h:button class="btn btn-success"  value=" Ana Sayfa" style="width: 120px;"  id="dropdownMenuButton" outcome="main_menu.xhtml"/>
+                             <h:button class="btn btn-success"  value=" Ana Sayfa" style="width: 110px;"  id="dropdownMenuButton" outcome="main_menu.xhtml"/>
                         </div>
                 </div>
                 <div class="col-xs-12">
@@ -39,17 +40,17 @@
                 </div>
                 <div class="col-xs-12">
                          <div class="dropdown" style="margin-right: 20px;">
-                                <h:button class="btn btn-success"  value="Spor" style="width: 120px;"  id="dropdownMenuButton_2" outcome="exercise.xhtml"/>
+                                <h:button class="btn btn-success"  value="Spor" style="width: 110px;"  id="dropdownMenuButton_2" outcome="exercise.xhtml"/>
                         </div>
                 </div>
                  <div class="col-xs-12">
                          <div class="dropdown" style="margin-right: 20px">
-                                <h:button class="btn btn-success"  value="Blog" style="width: 120px;"  id="dropdownMenuButton_3" outcome="blog.xhtml"/>
+                                <h:button class="btn btn-success"  value="Blog" style="width: 110px;"  id="dropdownMenuButton_3" outcome="blog.xhtml"/>
                         </div>
                 </div>
                 <div class="col-xs-12">
                          <div class="dropdown" style="margin-right: 20px">
-                            <button class="btn btn-success dropdown-toggle" style="width: 120px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-success dropdown-toggle" style="width: 110px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               Psikoloji
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -61,11 +62,11 @@
                 </div>
                  <div class="col-xs-12">
                          <div class="dropdown" style="margin-right: 20px">
-                            <button class="btn btn-success dropdown-toggle" style="width: 120px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                               Profil
+                            <button class="btn btn-success dropdown-toggle" style="width: 110px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               <i class="fa fa-user"></i>  Profil
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="profile.xhtml">Profil</a>
+                              <a class="dropdown-item" href="profil.xhtml">Profil</a>
                               <a class="dropdown-item" href="settings.xhtml">Ayarlar</a>
                               <a class="dropdown-item" href="login.xhtml">Çıkış</a>
                             </div>
@@ -73,10 +74,10 @@
                 </div>
             </div>   
         </div>
-
+        
         
         <div class="text-center mb-4">
-            <h1 >Feel Great With Meditation</h1> 
+            <h1 >Meditasyonla iyi hisset</h1> 
         </div>  
         <div class="container">
             <div class="row row-cols-4">
@@ -84,7 +85,7 @@
                     <div class="col text-center mb-4"  style="width: 300px;">
                         <h5 class="card-title">#{meditation.title}</h5>
                         <h:graphicImage  value = "#{meditation.imageurl}" style="width: 300px;"/>
-                        <input type="button" class="btn btn-success" style=" background-color:#04B404" value="Lets do!" onclick="window.location.href = '#{meditation.videourl}'"></input>
+                        <input type="button" class="btn btn-success" style=" background-color:#04B404" value="Hadi yapalım!" onclick="window.location.href = '#{meditation.videourl}'"></input>
                     </div>
                 </ui:repeat>
             </div>

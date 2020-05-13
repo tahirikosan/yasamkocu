@@ -1,4 +1,3 @@
-
 import java.io.Serializable;
 import static java.lang.Math.pow;
 import java.text.SimpleDateFormat;
@@ -29,9 +28,9 @@ public class Profil implements Serializable{
     private int triedRecipesList[] = new int[3];
     private int weeklyTriedRecipe[] = new int[7];
 
-    public Profil(User u) {
-       calculateBasalMetabolism(u);
-       calculateBodyMassIndex(u);
+
+    Profil() {
+        
     }
 
 
@@ -108,21 +107,24 @@ public class Profil implements Serializable{
         }else{
             basalMetabolism = (float) (65.5 + (13.7 * (user.getWeight())) + (5 * user.getHeight()) - (6.7 * user.getAge()));
         }
+        
     }
     
     public void calculateBodyMassIndex(User user){
         bodyMassIndex = (float) (user.getWeight()/pow(user.getHeight(), 2));
     }
     
-    public int calculateDailyReceivedCalories(User u){
+    public int calculateDailyReceivedCalories(int id){
         DBLayerZeyno db = new DBLayerZeyno();
-        int dondur = db.getTotalCalNutrition(u.getId());
+        int dondur = db.getTotalCalNutrition(id);
+        System.out.println(dondur);
         return dondur;
     }
     
-    public int calculateDailyGivenCalories(User u){
+    public int calculateDailyGivenCalories(int id){
         DBLayerZeyno db = new DBLayerZeyno();
-        int dondur = db.getTotalCalExercise(u.getId());
+        int dondur = db.getTotalCalExercise(id);
+        System.out.println(dondur);
         return dondur;
     }
     
@@ -134,29 +136,28 @@ public class Profil implements Serializable{
         
     }
     
-    public void getRecipeNumbersByLabel(User user){
+    public void getRecipeNumbersByLabel(int id){
         DBLayerEda db = new DBLayerEda();
-        triedRecipesList[0] = db.userRecipeNumberByLabel(user.getId(), "vegan");
-        triedRecipesList[1] = db.userRecipeNumberByLabel(user.getId(), "vejetaryen");
-        triedRecipesList[2] = db.userRecipeNumberByLabel(user.getId(), "diger");
+        triedRecipesList[0] = db.userRecipeNumberByLabel(id, "vegan");
+        triedRecipesList[1] = db.userRecipeNumberByLabel(id, "vejetaryen");
+        triedRecipesList[2] = db.userRecipeNumberByLabel(id, "normal");
     }
     
-    public void getRecipeNumbersByLabelAndDate(User user, String label, int deneme){
+    public void getRecipeNumbersByLabelAndDate(int id, String label){
         DBLayerEda db = new DBLayerEda();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
         
         for(int i = 0; i < 7; i++){
             Date date = new Date(System.currentTimeMillis()-i*24*60*60*1000);
             java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-            weeklyTriedRecipe[i] = db.userRecipeNumberByLabelAndDate(user.getId(), label, sqlDate);
+            weeklyTriedRecipe[i] = db.userRecipeNumberByLabelAndDate(id, label, sqlDate);
         }
     }
     
-    /*
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Profil p = new Profil();
-        p.getRecipeNumbersByLabelAndDate(,"vegan", 0);
-        
+        p.calculateDailyGivenCalories(1);
+        p.calculateDailyReceivedCalories(1);
     }
-    */
+    
 }
