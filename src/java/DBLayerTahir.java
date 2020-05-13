@@ -182,7 +182,7 @@ public class DBLayerTahir {
         return false;
     }
     
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         DBLayerTahir db = new DBLayerTahir();
         
         db.connect();
@@ -193,7 +193,7 @@ public class DBLayerTahir {
         //db.updateUser(user);
         
         
-    }
+    }*/
     
  
     

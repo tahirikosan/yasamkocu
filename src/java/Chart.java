@@ -1,30 +1,12 @@
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
-import org.primefaces.model.chart.BarChartSeries;
-import org.primefaces.model.chart.BubbleChartModel;
-import org.primefaces.model.chart.CartesianChartModel;
-import org.primefaces.model.chart.CategoryAxis;
 import org.primefaces.model.chart.ChartSeries;
-import org.primefaces.model.chart.DateAxis;
-import org.primefaces.model.chart.DonutChartModel;
-import org.primefaces.model.chart.HorizontalBarChartModel;
 import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
-import org.primefaces.model.chart.LinearAxis;
-import org.primefaces.model.chart.MeterGaugeChartModel;
-import org.primefaces.model.chart.OhlcChartModel;
-import org.primefaces.model.chart.OhlcChartSeries;
 import org.primefaces.model.chart.PieChartModel;
 
 
@@ -36,14 +18,6 @@ public class Chart implements Serializable{
     private BarChartModel barModel;
     private LineChartModel lineModel1;
     
-    /*
-    @PostConstruct
-    public void init() {
-        
-        createPieModels();
-        
-    }
-    */
     
     public PieChartModel getPieModel1() {
         return pieModel1;
@@ -112,7 +86,7 @@ public class Chart implements Serializable{
         Axis yAxis = barModel.getAxis(AxisType.Y);
         yAxis.setLabel("Kalori Miktarı");
         yAxis.setMin(0);
-        yAxis.setMax(3000);
+        yAxis.setMax(5000);
         
         return barModel;
     }
@@ -123,14 +97,14 @@ public class Chart implements Serializable{
     
     
     
-    public LineChartModel initLinearModel(int id, String label) {
+    public LineChartModel initLinearModel(int id) {
         LineChartModel model = new LineChartModel();
  
         LineChartSeries series1 = new LineChartSeries();
         series1.setLabel("haftaliktariftakip");
         
         Profil p = new Profil();
-        p.getRecipeNumbersByLabelAndDate(id, label);
+        p.getRecipeNumbersByLabelAndDate(id);
         
         int bir = p.getWeeklyTriedRecipe()[0];
         int iki = p.getWeeklyTriedRecipe()[1];
@@ -140,13 +114,13 @@ public class Chart implements Serializable{
         int alti = p.getWeeklyTriedRecipe()[5];
         int yedi = p.getWeeklyTriedRecipe()[6];
         
-        series1.set(1, bir);
-        series1.set(2, iki);
-        series1.set(3, uc);
+        series1.set(1, yedi);
+        series1.set(2, alti);
+        series1.set(3, bes);
         series1.set(4, dort);
-        series1.set(5, bes);
-        series1.set(6, alti);
-        series1.set(7, yedi);
+        series1.set(5, uc);
+        series1.set(6, iki);
+        series1.set(7, bir);
         
         
  
@@ -158,9 +132,9 @@ public class Chart implements Serializable{
     }
  
  
-    public LineChartModel createLineModel(int id, String label) {
-        lineModel1 = initLinearModel(id, label);
-        lineModel1.setTitle("Linear Chart");
+    public LineChartModel createLineModel(int id) {
+        lineModel1 = initLinearModel(id);
+        lineModel1.setTitle("Bir Hafta İçinde Denenen Tarifler");
         lineModel1.setLegendPosition("e");
         Axis yAxis = lineModel1.getAxis(AxisType.Y);
         yAxis.setMin(0);

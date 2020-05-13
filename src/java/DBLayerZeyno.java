@@ -161,6 +161,7 @@ public class DBLayerZeyno implements Serializable {
         ResultSet rs = null;
         PreparedStatement pst = null;
         Connection con = connect();
+        //Gelişmiş SQL BUARADA
         String stm = "SELECT USER_NUTRITION.ID,USER_NUTRITION.USERID,USER_NUTRITION.NUTRITIONID,USER_NUTRITION.NUTRITIONGR,USER_NUTRITION.NDATE,NUTRITION.NAME FROM LIFECOACH.USER_NUTRITION INNER JOIN NUTRITION ON USER_NUTRITION.NUTRITIONID=NUTRITION.ID WHERE USER_NUTRITION.USERID=" + userid;
         List<UserNutrition> records = new ArrayList<UserNutrition>();
 
@@ -215,6 +216,7 @@ public class DBLayerZeyno implements Serializable {
         PreparedStatement pst = null;
         Connection con = connect();
         String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+         //Gelişmiş SQL BUARADA 
         String stm = "SELECT SUM(USER_NUTRITION.NUTRITIONGR*NUTRITION.CAL) FROM LIFECOACH.USER_NUTRITION INNER JOIN NUTRITION ON USER_NUTRITION.NUTRITIONID=NUTRITION.ID WHERE USER_NUTRITION.NDATE='" + date + "' AND USER_NUTRITION.USERID=" + userid + " GROUP BY USER_NUTRITION.NDATE";
         int cal = 0;
         try {
@@ -340,6 +342,7 @@ public class DBLayerZeyno implements Serializable {
         ResultSet rs = null;
         PreparedStatement pst = null;
         Connection con = connect();
+         //Gelişmiş SQL BUARADA
         String stm = "SELECT USER_EXERCISE.ID,USER_EXERCISE.USERID,USER_EXERCISE.EXERCISEID,USER_EXERCISE.EXERCISETIME,USER_EXERCISE.EDATE,EXERCISE.NAME FROM LIFECOACH.USER_EXERCISE INNER JOIN EXERCISE ON USER_EXERCISE.EXERCISEID=EXERCISE.ID WHERE USER_EXERCISE.USERID=" + userid;
         List<UserExercise> records = new ArrayList<UserExercise>();
 
@@ -395,6 +398,7 @@ public class DBLayerZeyno implements Serializable {
         PreparedStatement pst = null;
         Connection con = connect();
         String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+         //Gelişmiş SQL BUARADA
         String stm = "SELECT SUM(USER_EXERCISE.EXERCISETIME*EXERCISE.CAL) FROM LIFECOACH.USER_EXERCISE INNER JOIN EXERCISE ON USER_EXERCISE.EXERCISEID=EXERCISE.ID WHERE USER_EXERCISE.EDATE='" + date + "'AND USER_EXERCISE.USERID=" + userid + " GROUP BY USER_EXERCISE.EDATE";
         int cal = 0;
         try {

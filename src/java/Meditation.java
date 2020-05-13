@@ -55,7 +55,7 @@ public class Meditation {
     public void setVideourl(String videourl) {
         this.videourl = videourl;
     }
-   public List<Meditation> getMeditations() { //Displaying all nutritions
+   public List<Meditation> getMeditations() { //Displaying all meditaiton
        
         DBLayerZeyno db = new DBLayerZeyno();
         meditations = new ArrayList();

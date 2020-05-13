@@ -130,16 +130,7 @@ background-image: url('assets/loginbg.jpg');
 	margin: auto;
 }
 
-.container_settings{
-background-color: white;
-background-image: url('assets/settings_bg.jpg');
 
-    width: 100%;
-    height: 100%;
-	background-repeat: no-repeat;
-	background-position: center;
-	margin: auto;
-}
 
 .card{
 height: 600px;

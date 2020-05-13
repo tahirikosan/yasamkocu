@@ -15,7 +15,7 @@ import javax.faces.bean.SessionScoped;
  *
  * @author Eda
  */
-@ManagedBean(name="ProfilBean")
+@ManagedBean
 @SessionScoped
 public class Profil implements Serializable{
 
@@ -29,7 +29,7 @@ public class Profil implements Serializable{
     private int weeklyTriedRecipe[] = new int[7];
 
 
-    Profil() {
+   public Profil() {
         
     }
 
@@ -101,17 +101,18 @@ public class Profil implements Serializable{
     
     
     
-    public void calculateBasalMetabolism(User user){
+    public float calculateBasalMetabolism(User user){
         if(user.getGender() == "female"){
             basalMetabolism = (float) (655 + (9.6 * (user.getWeight())) + (1.8 * user.getHeight()) - (4.7 * user.getAge()));
         }else{
             basalMetabolism = (float) (65.5 + (13.7 * (user.getWeight())) + (5 * user.getHeight()) - (6.7 * user.getAge()));
         }
-        
+        return basalMetabolism;
     }
     
-    public void calculateBodyMassIndex(User user){
+    public float calculateBodyMassIndex(User user){
         bodyMassIndex = (float) (user.getWeight()/pow(user.getHeight(), 2));
+        return bodyMassIndex;
     }
     
     public int calculateDailyReceivedCalories(int id){
@@ -128,13 +129,6 @@ public class Profil implements Serializable{
         return dondur;
     }
     
-    public void calculateReceivedCaloriesWithDate(){
-        
-    }
-    
-    public void calculateGivenCaloriesWithDate(){
-        
-    }
     
     public void getRecipeNumbersByLabel(int id){
         DBLayerEda db = new DBLayerEda();
@@ -143,21 +137,15 @@ public class Profil implements Serializable{
         triedRecipesList[2] = db.userRecipeNumberByLabel(id, "normal");
     }
     
-    public void getRecipeNumbersByLabelAndDate(int id, String label){
+    public void getRecipeNumbersByLabelAndDate(int id){
         DBLayerEda db = new DBLayerEda();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
         
         for(int i = 0; i < 7; i++){
             Date date = new Date(System.currentTimeMillis()-i*24*60*60*1000);
             java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-            weeklyTriedRecipe[i] = db.userRecipeNumberByLabelAndDate(id, label, sqlDate);
+            weeklyTriedRecipe[i] = db.userRecipeNumberByDate(id, sqlDate);
         }
-    }
-    
-    public static void main(String[] args) {
-        Profil p = new Profil();
-        p.calculateDailyGivenCalories(1);
-        p.calculateDailyReceivedCalories(1);
     }
     
 }
