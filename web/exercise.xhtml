@@ -20,11 +20,11 @@
     <h:body> 
         
         
-                <div class="container" style="padding-top:5px;margin-bottom: 20px; margin-left: 250px;">
+               <div style="width: 60%; display: table; margin: auto;margin-top: 10px;">
             <div class="row">
                 <div class="col-xs-12" style="margin-right: 30px;">
                          <div class="dropdown">
-                             <h:button class="btn btn-success"  value=" Ana Sayfa" style="width: 120px;"  id="dropdownMenuButton" outcome="main_menu.xhtml"/>
+                             <h:button class="btn btn-success"  value=" Ana Sayfa" style="width: 110px;"  id="dropdownMenuButton" outcome="main_menu.xhtml"/>
                         </div>
                 </div>
                 <div class="col-xs-12">
@@ -40,17 +40,17 @@
                 </div>
                 <div class="col-xs-12">
                          <div class="dropdown" style="margin-right: 20px;">
-                                <h:button class="btn btn-success"  value="Spor" style="width: 120px;"  id="dropdownMenuButton_2" outcome="exercise.xhtml"/>
+                                <h:button class="btn btn-success"  value="Spor" style="width: 110px;"  id="dropdownMenuButton_2" outcome="exercise.xhtml"/>
                         </div>
                 </div>
                  <div class="col-xs-12">
                          <div class="dropdown" style="margin-right: 20px">
-                                <h:button class="btn btn-success"  value="Blog" style="width: 120px;"  id="dropdownMenuButton_3" outcome="blog.xhtml"/>
+                                <h:button class="btn btn-success"  value="Blog" style="width: 110px;"  id="dropdownMenuButton_3" outcome="blog.xhtml"/>
                         </div>
                 </div>
                 <div class="col-xs-12">
                          <div class="dropdown" style="margin-right: 20px">
-                            <button class="btn btn-success dropdown-toggle" style="width: 120px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-success dropdown-toggle" style="width: 110px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               Psikoloji
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -62,8 +62,8 @@
                 </div>
                  <div class="col-xs-12">
                          <div class="dropdown" style="margin-right: 20px">
-                            <button class="btn btn-success dropdown-toggle" style="width: 120px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                               Profil
+                            <button class="btn btn-success dropdown-toggle" style="width: 110px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               <i class="fa fa-user"></i>  Profil
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                               <a class="dropdown-item" href="profil.xhtml">Profil</a>
@@ -120,9 +120,9 @@
                                 <h5 class="card-title"> <h:outputText value="#{exercise.name}"/></h5>
                                 <h:form>
                                     <h:inputHidden value="#{exercise.id}"></h:inputHidden>
-                                    <h:outputText value="Enter the minutes"/>
+                                    <h:outputText value="Dakika gir"/>
                                     <h:inputText value="#{UserExerciseBean.exercisetime}" required="true"/>
-                                    <h:commandButton value="I did this today" class="btn btn-success btn btn-primary stretched-link mt-1" style=" background-color:#04B404" action="#{UserExerciseBean.addUserExercise(exercise.id,UserExerciseBean.exercisetime,user.id)}"/>
+                                    <h:commandButton value="Bugün bunu yaptım" class="btn btn-success btn btn-primary stretched-link mt-1" style=" background-color:#04B404" action="#{UserExerciseBean.addUserExercise(exercise.id,UserExerciseBean.exercisetime,user.id)}"/>
                                 </h:form>
                             </div> 
                         </div>

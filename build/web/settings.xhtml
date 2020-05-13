@@ -21,7 +21,7 @@ and open the template in the editor.
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"/>
 
 	<!--Custom styles-->
-        <link rel="stylesheet" type="text/css" href="tahir.css"></link>
+        <link rel="stylesheet" type="text/css" href="mystyle.css"></link>
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         
@@ -34,11 +34,11 @@ and open the template in the editor.
     </h:head>
     <h:body class="body_settings">
         
-                <div class="container" style="padding-top:5px;margin-bottom: 20px; margin-left: 250px;">
+          <div style="width: 60%; display: table; margin: auto;margin-top: 10px;margin-bottom: 20px;">
             <div class="row">
                 <div class="col-xs-12" style="margin-right: 30px;">
                          <div class="dropdown">
-                             <h:button class="btn btn-success"  value=" Ana Sayfa" style="width: 120px;"  id="dropdownMenuButton" outcome="main_menu.xhtml"/>
+                             <h:button class="btn btn-success"  value=" Ana Sayfa" style="width: 110px;"  id="dropdownMenuButton" outcome="main_menu.xhtml"/>
                         </div>
                 </div>
                 <div class="col-xs-12">
@@ -54,17 +54,17 @@ and open the template in the editor.
                 </div>
                 <div class="col-xs-12">
                          <div class="dropdown" style="margin-right: 20px;">
-                                <h:button class="btn btn-success"  value="Spor" style="width: 120px;"  id="dropdownMenuButton_2" outcome="exercise.xhtml"/>
+                                <h:button class="btn btn-success"  value="Spor" style="width: 110px;"  id="dropdownMenuButton_2" outcome="exercise.xhtml"/>
                         </div>
                 </div>
                  <div class="col-xs-12">
                          <div class="dropdown" style="margin-right: 20px">
-                                <h:button class="btn btn-success"  value="Blog" style="width: 120px;"  id="dropdownMenuButton_3" outcome="blog.xhtml"/>
+                                <h:button class="btn btn-success"  value="Blog" style="width: 110px;"  id="dropdownMenuButton_3" outcome="blog.xhtml"/>
                         </div>
                 </div>
                 <div class="col-xs-12">
                          <div class="dropdown" style="margin-right: 20px">
-                            <button class="btn btn-success dropdown-toggle" style="width: 120px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-success dropdown-toggle" style="width: 110px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               Psikoloji
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -76,8 +76,8 @@ and open the template in the editor.
                 </div>
                  <div class="col-xs-12">
                          <div class="dropdown" style="margin-right: 20px">
-                            <button class="btn btn-success dropdown-toggle" style="width: 120px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                               Profil
+                            <button class="btn btn-success dropdown-toggle" style="width: 110px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               <i class="fa fa-user"></i>  Profil
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                               <a class="dropdown-item" href="profil.xhtml">Profil</a>
@@ -88,11 +88,12 @@ and open the template in the editor.
                 </div>
             </div>   
         </div>
+        
 
         
-                <div class="container_settings">
-                <div class="d-flex justify-content-center h-100">
-                        <div class="card">
+        <div  class="container_settings" align="center" style="margin-bottom: 20px;">
+                <div class="d-flex justify-content-center h-100" >
+                        <div class="card" >
                                 <div class="card-header">
                                         <h3>Ayarlar</h3>
                                 </div>
@@ -165,7 +166,6 @@ and open the template in the editor.
                         </div>
                 </div>
         </div> 
-        
         
         
     </h:body>
