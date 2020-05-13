@@ -104,6 +104,7 @@ public class DBLayerEda {
         
         try{
             Statement statement = conn.createStatement();
+             //Gelişmiş SQL BUARADA
             ResultSet result = statement.executeQuery("SELECT count(*) FROM USER_RECIPES INNER JOIN FIT_RECIPES ON USER_RECIPES.RECIPEID=FIT_RECIPES.ID WHERE USER_RECIPES.USERID="+userid+" AND FIT_RECIPES.LABEL='"+label+"'");
             
             result.next();
@@ -121,7 +122,7 @@ public class DBLayerEda {
     }
     
     //returns the number of records with specified label,date and userid from USER_RECIPES table
-    public int userRecipeNumberByLabelAndDate(int userid, String label, Date date) {
+    public int userRecipeNumberByDate(int userid, Date date) {
         if(conn == null){
             System.out.println("Bağlantı sağlanamadı, yeniden bağlanıyor...");
             connect();
@@ -131,7 +132,8 @@ public class DBLayerEda {
         
         try{
             Statement statement = conn.createStatement();
-            ResultSet result = statement.executeQuery("SELECT count(*) FROM USER_RECIPES INNER JOIN FIT_RECIPES ON USER_RECIPES.RECIPEID=FIT_RECIPES.ID WHERE USER_RECIPES.USERID="+userid+" AND FIT_RECIPES.LABEL='"+label+"' AND USER_RECIPES.READINGDATE='"+date+"'");
+             //Gelişmiş SQL BUARADA
+            ResultSet result = statement.executeQuery("SELECT count(*) FROM USER_RECIPES INNER JOIN FIT_RECIPES ON USER_RECIPES.RECIPEID=FIT_RECIPES.ID WHERE USER_RECIPES.USERID="+userid+" AND USER_RECIPES.READINGDATE='"+date+"'");
             
             result.next();
             
@@ -289,6 +291,10 @@ public class DBLayerEda {
         DBLayerEda db = new DBLayerEda();
         int number = db.userRecipeList(3, "normal");
     }*/
+
+    void userRecipeNumberByLabelAndDate(int userid, String label, Date readingDate) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     
 }

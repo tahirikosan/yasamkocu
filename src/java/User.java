@@ -244,7 +244,7 @@ public class User {
            boolean result = db.updateUser(this);
            
            if(result){
-               return "profile.xhtml";
+               return "profil.xhtml";
            }else{
                errorSettings = "Kaydetme işlemi yapılamadı tekrar deneyiniz.";
                return "settings.xhtml";
