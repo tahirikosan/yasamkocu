@@ -7,7 +7,8 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html  xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     
     <h:head>
         <title>Recipe Display</title>
@@ -89,7 +90,7 @@ and open the template in the editor.
         
         <div class="container">
             <div class="row" style="margin-top: 10%;" align="center">
-                <div class="col-md-12">
+                <div class="col-md-9">
                     <h:form>
                         <img src="#{RecipeBean.imageUrl}" class="img-fluid" alt="Responsive image"></img>
                         <h1 class="display-2">#{RecipeBean.title}</h1>
@@ -110,7 +111,29 @@ and open the template in the editor.
                         <h:commandButton class="btn btn-success" value="Bugün bu tarifi yaptım." type="submit" action="#{UserRecipeBean.recipeMade(user.id, RecipeBean.id)}" />
                     </h:form>
                 </div>
+                <div class="d-xs-none col-md-3 d-none d-md-block">
+                    <div>
+                    <h:form>
+                    
+                        <ui:repeat var="text" value="#{RecipeBean.getRecipeList()}">
+                            <div class="row ">
+                            <h:panelGroup layout="block" id="container" class="col-md-12" >
+
+                                <h:commandLink action="#{RecipeBean.getRecipe(text.id)}" style="display:block;">
+                                    <div style="margin:3%">
+                                        <img src="#{text.imageUrl}" class="img-fluid" alt="Responsive image"></img>
+                                        <div class="bottom-left"><p>#{text.title}</p></div>
+                                    </div>
+                                </h:commandLink>
+
+                            </h:panelGroup>
+                            </div>
+                        </ui:repeat>
+                    
+                </h:form>             
+                </div>
+                </div>
             </div>
-        </div>     
+        </div>        
     </h:body>
 </html>
